@@ -31,7 +31,18 @@
       <div class="page-header">
         <h1>Job Postings</h1>
       </div>
-      <p class="lead">*List of job postings will go here*</p>
+      <form>
+        <div class="form-group">
+          <input class="form-control" type="text" list="browsers" />
+          <datalist class="dropdown-menu" id="browsers">
+            <option value="Internet Explorer">
+            <option value="Firefox">
+            <option value="Chrome">
+            <option value="Opera">
+            <option value="Safari">
+          </datalist> 
+        </div>
+      </form>
     </div>
 
     <% include common/footer.ejs %>
