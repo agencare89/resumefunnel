@@ -17,7 +17,12 @@ app.use(express.static(__dirname + '/public'));
 
 // Routes
 var index = require('./routes/index');
+var login = require('./routes/login');
+var register = require('./routes/register');
+
 app.use('/', index);
+app.use('/login', login);
+app.use('/register', register);
 
 var appEnv = cfenv.getAppEnv();
 
