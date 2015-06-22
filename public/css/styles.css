@@ -40,3 +40,13 @@ code {
   max-height: 200px;
   overflow-x: hidden;
 }
+
+.vertical-center {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
+
+.remove-margin {
+  margin: 0px !important;
+}
