@@ -30,14 +30,15 @@
 			Register for an account today!
 		</h1>
 		<hr>
-		<form>
+		<form role="form">
 			<div class="row">
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="firstNameInput">First Name</label>
 						<div class="input-group">
       				<div class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></div>
-							<input type="text" class="form-control" id="firstNameInput" placeholder="First Name">
+							<input type="text" class="form-control" id="firstNameInput" placeholder="First Name" required>
+							
 						</div>
 					</div>
 				</div>
@@ -46,7 +47,7 @@
 						<label for="lastNameInput">Last Name</label>
 						<div class="input-group">
       				<div class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></div>
-							<input type="text" class="form-control" id="lastNameInput" placeholder="Last Name">
+							<input type="text" class="form-control" id="lastNameInput" placeholder="Last Name" required>
 						</div>
 					</div>
 				</div>
@@ -55,7 +56,7 @@
 				<label for="emailInput">Email Address</label>
 				<div class="input-group">
       		<div class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></div>
-					<input type="text" class="form-control" id="emailInput" placeholder="Email Address">
+					<input type="text" class="form-control" id="emailInput" placeholder="Email Address" required>
 				</div>
 			</div>
 			<div class="row">
@@ -64,7 +65,7 @@
 						<label for="passwordInput">Password</label>
 						<div class="input-group">
 		      		<div class="input-group-addon"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></div>
-							<input type="password" class="form-control" id="passwordInput" placeholder="Password">
+							<input type="password" class="form-control" id="passwordInput" placeholder="Password" required>
 						</div>
 					</div>
 				</div>
@@ -73,23 +74,23 @@
 						<label for="reEnterPasswordInput">Re-Enter Password</label>
 						<div class="input-group">
 		      		<div class="input-group-addon"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></div>
-							<input type="password" class="form-control" id="reEnterPasswordInput" placeholder="Re-Enter Password">
+							<input type="password" class="form-control" id="reEnterPasswordInput" placeholder="Re-Enter Password" required>
 						</div>
 					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="companyLocationInput">Company Location</label>
-				<div class="input-group">
-  				<div class="input-group-addon"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></div>
-					<input type="text" class="form-control" id="companyLocationInput" placeholder="Company Location">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="companyNameInput">Company Name</label>
 				<div class="input-group">
   				<div class="input-group-addon"><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span></div>
-					<input type="text" class="form-control" id="companyNameInput" placeholder="Company Name">
+					<input type="text" class="form-control" id="companyNameInput" placeholder="Company Name" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="companyLocationInput">Company Location</label>
+				<div class="input-group">
+  				<div class="input-group-addon"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></div>
+					<input type="text" class="form-control" id="companyLocationInput" placeholder="Company Location" required>
 				</div>
 			</div>
 			<p>
@@ -105,5 +106,6 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/scripts.js"></script>
 	<script src="js/ie10-viewport-bug-workaround.js"></script>
+	<script src="js/validator.js"></script>
 </body>
 </html>
