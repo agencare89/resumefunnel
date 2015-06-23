@@ -9,6 +9,7 @@
 var express = require('express');
 var ejs = require('ejs');
 var cfenv = require('cfenv');
+var helpers = require('express-helpers')
 
 var app = express();
 
@@ -25,6 +26,8 @@ app.use('/login', login);
 app.use('/register', register);
 
 var appEnv = cfenv.getAppEnv();
+
+helpers(app);
 
 // start server on the specified port and binding host
 app.listen(appEnv.port, appEnv.bind, function() {

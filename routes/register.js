@@ -3,7 +3,10 @@ var router = express.Router();
 
 /* GET login page. */
 router.get('/', function(req, res, next) {
-  res.render('register', { login : true });
+	// TODO: Replace hard-coded user with logged in user information from Passport.io (null if not logged in)
+  	res.render('register', { 
+  		user : null
+  	});
 });
 
 module.exports = router;
