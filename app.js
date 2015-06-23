@@ -23,6 +23,7 @@ var register = require('./routes/register');
 var postings = require('./routes/postings');
 var dashboard = require('./routes/dashboard');
 var job = require('./routes/job');
+var newPost = require('./routes/new');
 
 app.use('/', index);
 app.use('/login', login);
@@ -30,6 +31,7 @@ app.use('/register', register);
 app.use('/postings', postings);
 app.use('/dashboard', dashboard);
 app.use('/job', job);
+app.use('/new', newPost);
 
 var appEnv = cfenv.getAppEnv();
 

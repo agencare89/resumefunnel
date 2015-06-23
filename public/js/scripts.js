@@ -13,8 +13,6 @@ $(document).ready(function() {
 			var inputGroup = $(value.group + " .input-group");
 			var status = null;
 
-			
-
 			if (inputGroup) {
 				inputGroup.after("<span class='form-control-feedback' aria-hidden='true'></span>");
 				status = $(value.group + " .input-group + span");

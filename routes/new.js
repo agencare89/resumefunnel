@@ -4,9 +4,9 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	// TODO: Replace hard-coded user with logged in user information from Passport.io (null if not logged in)
-  	res.render('postings', { 
+  	res.render('new', { 
   		user : 'tomfischer',
-  		postings : 'active'
+  		'new' : 'active'
   	});
 });
 
