@@ -20,10 +20,12 @@ app.use(express.static(__dirname + '/public'));
 var index = require('./routes/index');
 var login = require('./routes/login');
 var register = require('./routes/register');
+var dashboard = require('./routes/dashboard');
 
 app.use('/', index);
 app.use('/login', login);
 app.use('/register', register);
+app.use('/dashboard', dashboard);
 
 var appEnv = cfenv.getAppEnv();
 
