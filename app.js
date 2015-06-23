@@ -20,12 +20,14 @@ app.use(express.static(__dirname + '/public'));
 var index = require('./routes/index');
 var login = require('./routes/login');
 var register = require('./routes/register');
+var postings = require('./routes/postings');
 var dashboard = require('./routes/dashboard');
 var job = require('./routes/job');
 
 app.use('/', index);
 app.use('/login', login);
 app.use('/register', register);
+app.use('/postings', postings);
 app.use('/dashboard', dashboard);
 app.use('/job', job);
 
