@@ -7,10 +7,21 @@ $(document).ready(function() {
 (function ($) {
 	$.fn.validate = function(rules) {
 		$.each(rules, function(i, value) {
+			debugger;
 			var group = $(value.group);
-			var input = $(value.group + " input")
-			input.after("<span class='form-control-feedback' aria-hidden='true'></span>");
-			var status = $(value.group + " input + span");
+			var input = $(value.group + " input");
+			var inputGroup = $(value.group + " .input-group");
+			var status = null;
+
+			
+
+			if (inputGroup) {
+				inputGroup.after("<span class='form-control-feedback' aria-hidden='true'></span>");
+				status = $(value.group + " .input-group + span");
+			} else {
+				input.after("<span class='form-control-feedback' aria-hidden='true'></span>");
+				status = $(value.group + " input + span");
+			}
 
 			input.on("focusout", function() {
 				$.each(value.rules, function(j, rule) {
