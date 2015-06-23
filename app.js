@@ -21,11 +21,13 @@ var index = require('./routes/index');
 var login = require('./routes/login');
 var register = require('./routes/register');
 var dashboard = require('./routes/dashboard');
+var job = require('./routes/job');
 
 app.use('/', index);
 app.use('/login', login);
 app.use('/register', register);
 app.use('/dashboard', dashboard);
+app.use('/job', job);
 
 var appEnv = cfenv.getAppEnv();
 

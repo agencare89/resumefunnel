@@ -3,8 +3,12 @@ $( document ).ready(function() {
 		firstName : {
 			group : "form > div:nth-child(1)",
 			rules : [{
-				type : "empty",
+				type : "email",
 				message : "Please enter your email"
+			},
+			{
+				type : "empty",
+				message : "Please enter your password"
 			}]
 		},
 		lastName : {

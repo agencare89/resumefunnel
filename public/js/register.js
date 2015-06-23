@@ -19,6 +19,10 @@ $(document).ready(function() {
 			rules : [{
 				type : "email",
 				message : "Please enter a valid email address"
+			},
+			{
+				type : "empty",
+				message : "Please enter your password"
 			}]
 		},
 		password : {

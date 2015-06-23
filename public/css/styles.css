@@ -66,3 +66,12 @@ code {
 .left-margin {
   margin-left: 15px;
 }
+
+.company-logo {
+  padding: 15px;
+}
+
+.company-logo img {
+  width: 100%;
+  height: 100%;
+}
