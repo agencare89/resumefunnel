@@ -2,6 +2,11 @@
  * Globals
  */
 
+@font-face {
+  font-family: BebasNeue;
+  src: url("../fonts/BebasNeue.otf") format("opentype");
+}
+
 /* Links */
 a,
 a:focus,
@@ -27,7 +32,7 @@ a:hover {
 html,
 body {
   height: 100%;
-  background: url(../images/cover.jpg) no-repeat center center fixed; 
+  background: url(../images/cover_2560.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -70,6 +75,9 @@ body {
 .masthead-brand {
   margin-top: 10px;
   margin-bottom: 10px;
+  font-family: 'BebasNeue', serif;
+  font-size: 30pt;
+  letter-spacing: 4px;
 }
 
 .masthead-nav > li {
