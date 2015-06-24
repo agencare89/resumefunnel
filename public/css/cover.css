@@ -191,3 +191,5 @@ body {
 .btn:hover {
   border-width: 3px;
 }
+
+/* TODO: @media tags for the index.ejs cover depending on screen size */

@@ -26,7 +26,10 @@
 	<% include common/nav.ejs %>
 
 	<div class="container">
-		<h1>Create a new job posting</h1>
+		<h1>
+			Create a new job posting<br />
+			<small>Here you can create a new job post. Make sure you provide a good description of the position, and fill out all of the fields before submitting</small>
+		</h1>
 		<hr>
 		<form role="form">
 			<h3>Job Title</h3>
@@ -44,7 +47,7 @@
 				<input type="text" class="form-control" class="qualificationInput" placeholder="Qualification" required />
 			</div>
 			<div class="form-group">
-				<button type="button" class="btn btn-default addQualification">Add Field</button>
+				<button type="button" class="btn btn-default addQualification">Add Field <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
 			</div>
 
 			<h3>Minimum Requirements</h3>
@@ -52,14 +55,14 @@
 				<input type="text" class="form-control" class="requirementInput" placeholder="Requirement" required />
 			</div>
 			<div class="form-group">
-				<button type="button" class="btn btn-default addRequirement">Add Field</button>
+				<button type="button" class="btn btn-default addRequirement">Add Field <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
 			</div>
 
 			<h3>Application Due Date</h3>
 			<div class="form-group">
 				<div class='input-group date' id='dueDatePicker'>
-                    <input type='text' class="form-control" placeholder="DD/MM/YYYY" />
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    <input type='text' class="form-control" placeholder="DD/MM/YYYY" required />
                 </div>
 			</div>
 
