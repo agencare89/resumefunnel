@@ -12,6 +12,7 @@
 	<title>New Job Posting</title>
 
 	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
 	<link href="css/styles.css" rel="stylesheet">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -54,6 +55,14 @@
 				<button type="button" class="btn btn-default addRequirement">Add Field</button>
 			</div>
 
+			<h3>Application Due Date</h3>
+			<div class="form-group">
+				<div class='input-group date' id='dueDatePicker'>
+                    <input type='text' class="form-control" placeholder="DD/MM/YYYY" />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+			</div>
+
 			<h3>Other Notes</h3>
 			<div class="form-group">
 				<textarea class="form-control" id="jobDescTextArea" rows="5" placeholder="Please enter a job description..."></textarea>
@@ -66,6 +75,8 @@
 
 	<script src="js/lib/jquery-2.1.4.min.js"></script>
 	<script src="js/lib/bootstrap.min.js"></script>
+	<script src="js/lib/moment.min.js"></script>
+	<script src="js/lib/bootstrap-datetimepicker.js"></script>
 	<script src="js/lib/ie10-viewport-bug-workaround.js"></script>
 	<script src="js/new.js"></script>
 	<script src="js/scripts.js"></script>
