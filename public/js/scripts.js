@@ -59,6 +59,8 @@ $(document).ready(function() {
 						case "min":
 							flagged = input.val().length < rule.min;
 							break;
+						case "phone":
+							flagged = !/^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/i.test(input.val());
 						default:
 							console.log("Invalid validation type");
 					}
