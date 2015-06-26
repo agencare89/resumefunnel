@@ -8,7 +8,6 @@ router.get('/', function(req, res, next) {
         message: req.flash('loginMessage') 
     });
 });
-
 router.post('/', passport.authenticate('local-login', {
     successRedirect : '/postings', // redirect to the secure profile section
     failureRedirect : '/login', // redirect back to the signup page if there is an error
