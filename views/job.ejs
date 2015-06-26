@@ -7,7 +7,7 @@
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<link rel="icon" href="../../favicon.ico">
+	<link rel="icon" href="images/favicon.ico">
 
 	<title>Software Developer - User Interfaces</title>
 
@@ -27,7 +27,10 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8">
-				<h1>Software Developer - User Interfaces</h1>
+				<h1>
+					Software Developer - User Interfaces<br>
+					<small>Application Due Date: 24/06/2015</small>
+				</h1>
 				<hr />
 				<h2>Job Description</h2>
 				<p>
@@ -63,16 +66,16 @@
 
 				<form>
 					<div class="form-group">
-						<label for="exampleInputFile">Upload your resume!</label>
-						<input type="file" id="exampleInputFile">
+						<label for="resumeUploadFile">Upload your resume!</label>
+						<input type="file" id="resumeUploadFile">
 					</div>
 				</form>
 			</div>
 			<div class="col-md-4">
 				<div class="panel panel-default">
-					<div class="panel-heading text-center"><strong>IBM</strong></div>
+					<div class="panel-heading text-center"><strong><%= contact.companyName %></strong></div>
 					<div class="company-logo">
-						<img src="images/IBM_logo.svg" />
+						<img src="<%= contact.companyLogo %>" />
 					</div>
 					<table class="table table-bordered">
 						<thead>
@@ -83,27 +86,25 @@
 								<td>Job Location</td>
 								<td>
 									<address class="remove-margin">
-										8200 Warden Ave,<br>
-										Unionville, ON Canada<br>
-										L6G 1C7
+										<%= contact.companyLocation %>
 									</address>
 								</td>
 							</tr>
 							<tr>
 								<td>Contact Name</td>
-								<td>Tom Fischer</td>
+								<td><%= contact.firstName %> <%= contact.lastName %></td>
 							</tr>
 							<tr>
 								<td>Website</td>
-								<td><a href="http://www.ibm.com/" target="_blank">http://www.ibm.com/</td>
+								<td><a href="<%= contact.companyWebsite %>" target="_blank"><%= contact.companyWebsite %></td>
 							</tr>
 							<tr>
 								<td>Phone</td>
-								<td>(905) 316-5000</td>
+								<td><%= contact.phoneNumber %></td>
 							</tr>
 							<tr>
 								<td>Email</td>
-								<td>ftom05@ca.ibm.com</td>
+								<td><%= contact.email %></td>
 							</tr>
 						</tbody>
 					</table>

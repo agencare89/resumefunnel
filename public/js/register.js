@@ -1,42 +1,53 @@
 $(document).ready(function() {
 	$("form").validate({
 		firstName : {
-			group : "form > div:nth-child(1) > div:nth-child(1) > div",
+			group : ".firstNameGroup",
 			rules : [{
 				type : "empty",
 				message : "Please enter a first name"
 			}]
 		},
 		lastName : {
-			group : "form > div:nth-child(1) > div:nth-child(2) > div",
+			group : ".lastNameGroup",
 			rules : [{
 				type : "empty",
 				message : "Please enter a last name"
 			}]
 		},
+		phone : {
+			group : ".phoneGroup",
+			rules : [{
+				type : "phone",
+				message : "Please enter a valid phone number"
+			},
+			{
+				type : "empty",
+				message : "Please enter a phone number"
+			}]
+		},
 		email : {
-			group : "form > div:nth-child(2)",
+			group : ".emailGroup",
 			rules : [{
 				type : "email",
 				message : "Please enter a valid email address"
 			},
 			{
 				type : "empty",
-				message : "Please enter your password"
+				message : "Please enter your email address"
 			}]
 		},
 		password : {
-			group : "form > div:nth-child(3) > div:nth-child(1) > div",
+			group : ".passwordGroup",
 			rules : [{
 				type : "empty",
 				message : "Please enter a password"
 			}]
 		},
 		rePassword : {
-			group : "form > div:nth-child(3) > div:nth-child(2) > div",
+			group : ".rePasswordGroup",
 			rules : [{
 				type : "match",
-				match : "form > div:nth-child(3) > div:nth-child(1) > div",
+				match : ".passwordGroup",
 				message : "Your password does not match"
 			},
 			{
@@ -44,18 +55,25 @@ $(document).ready(function() {
 				message : "Please enter a password"
 			}]
 		},
-		company : {
-			group : "form > div:nth-child(4)",
+		companyName : {
+			group : ".companyNameGroup",
 			rules : [{
 				type : "empty",
 				message : "Please enter a company name"
 			}]
 		},
-		location : {
-			group : "form > div:nth-child(5)",
+		companyLocation : {
+			group : ".companyLocationGroup",
 			rules : [{
 				type : "empty",
 				message : "Please enter a company location"
+			}]
+		},
+		companyWebsite : {
+			group : ".companyWebsiteGroup",
+			rules : [{
+				type : "empty",
+				message : "Please enter a company website"
 			}]
 		}
 	});

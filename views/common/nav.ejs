@@ -14,6 +14,7 @@
         <li class="<%= typeof postings != 'undefined' ? postings : '' %>"><%- link_to("Job Postings", "/postings") %></li>
         <% if (user) { %>
           <li class="<%= typeof dashboard != 'undefined' ? dashboard : '' %>"><%- link_to("Dashboard", "/dashboard") %></li>
+          <li class="<%= typeof newPost != 'undefined' ? newPost : '' %>"><%- link_to("Add Job Posting", "/new") %></li>
         <% } %>
       </ul>
       <div class="nav navbar-nav navbar-right">

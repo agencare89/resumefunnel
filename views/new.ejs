@@ -7,11 +7,12 @@
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<link rel="icon" href="../../favicon.ico">
+	<link rel="icon" href="images/favicon.ico">
 
 	<title>New Job Posting</title>
 
 	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
 	<link href="css/styles.css" rel="stylesheet">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -25,7 +26,10 @@
 	<% include common/nav.ejs %>
 
 	<div class="container">
-		<h1>Create a new job posting</h1>
+		<h1>
+			Create a new job posting<br />
+			<small>Here you can create a new job post. Make sure you provide a good description of the position, and fill out all of the fields before submitting</small>
+		</h1>
 		<hr>
 		<form role="form">
 			<h3>Job Title</h3>
@@ -43,7 +47,7 @@
 				<input type="text" class="form-control" class="qualificationInput" placeholder="Qualification" required />
 			</div>
 			<div class="form-group">
-				<button type="button" class="btn btn-default addQualification">Add Field</button>
+				<button type="button" class="btn btn-default addQualification">Add Field <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
 			</div>
 
 			<h3>Minimum Requirements</h3>
@@ -51,7 +55,15 @@
 				<input type="text" class="form-control" class="requirementInput" placeholder="Requirement" required />
 			</div>
 			<div class="form-group">
-				<button type="button" class="btn btn-default addRequirement">Add Field</button>
+				<button type="button" class="btn btn-default addRequirement">Add Field <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
+			</div>
+
+			<h3>Application Due Date</h3>
+			<div class="form-group">
+				<div class='input-group date' id='dueDatePicker'>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    <input type='text' class="form-control" placeholder="DD/MM/YYYY" required />
+                </div>
 			</div>
 
 			<h3>Other Notes</h3>
@@ -66,6 +78,8 @@
 
 	<script src="js/lib/jquery-2.1.4.min.js"></script>
 	<script src="js/lib/bootstrap.min.js"></script>
+	<script src="js/lib/moment.min.js"></script>
+	<script src="js/lib/bootstrap-datetimepicker.js"></script>
 	<script src="js/lib/ie10-viewport-bug-workaround.js"></script>
 	<script src="js/new.js"></script>
 	<script src="js/scripts.js"></script>

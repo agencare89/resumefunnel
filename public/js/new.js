@@ -10,4 +10,8 @@ $(document).ready(function() {
 										  <input type=\"text\" class=\"form-control\" class=\"requirementInput\" placeholder=\"Requirement\" />\
 										 </div>");
 	});
+
+	$('#dueDatePicker').datetimepicker({
+		format : 'DD/MM/YYYY'
+	});
 });
