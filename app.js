@@ -56,6 +56,11 @@ var appEnv = cfenv.getAppEnv();
 
 helpers(app);
 
+app.get('/logout', function(req, res) {
+    req.logout();
+    res.redirect('/');
+});
+
 // start server on the specified port and binding host
 app.listen(appEnv.port, appEnv.bind, function() {
   console.log("server starting on " + appEnv.url);

@@ -31,20 +31,20 @@
 			<small>Here you can create a new job post. Make sure you provide a good description of the position, and fill out all of the fields before submitting</small>
 		</h1>
 		<hr>
-		<form role="form">
+		<form role="form" method="post" action="/new">
 			<h3>Job Title</h3>
 			<div class="form-group">
-				<input type="text" class="form-control" id="firstNameInput" placeholder="Job Title">
+				<input type="text" class="form-control" id="firstNameInput" placeholder="Job Title" name="jobTitle">
 			</div>
 
 			<h3>Job Description</h3>
 			<div class="form-group">
-				<textarea class="form-control" id="jobDescTextArea" rows="5" placeholder="Please enter a job description..." required></textarea>
+				<textarea class="form-control" id="jobDescTextArea" rows="5" placeholder="Please enter a job description..." name="jobDescription" required></textarea>
 			</div>
 
 			<h3>Desirable Qualifications</h3>
 			<div class="form-group qualifications">
-				<input type="text" class="form-control" class="qualificationInput" placeholder="Qualification" required />
+				<input type="text" class="form-control" class="qualificationInput" placeholder="Qualification" name="qualifications" required />
 			</div>
 			<div class="form-group">
 				<button type="button" class="btn btn-default addQualification">Add Field <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
@@ -52,7 +52,7 @@
 
 			<h3>Minimum Requirements</h3>
 			<div class="form-group requirements">
-				<input type="text" class="form-control" class="requirementInput" placeholder="Requirement" required />
+				<input type="text" class="form-control" class="requirementInput" placeholder="Requirement" name="requirements" required />
 			</div>
 			<div class="form-group">
 				<button type="button" class="btn btn-default addRequirement">Add Field <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
@@ -62,13 +62,13 @@
 			<div class="form-group">
 				<div class='input-group date' id='dueDatePicker'>
 					<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                    <input type='text' class="form-control" placeholder="DD/MM/YYYY" required />
+                    <input type='text' class="form-control" placeholder="DD/MM/YYYY" name="dueDate" required />
                 </div>
 			</div>
 
 			<h3>Other Notes</h3>
 			<div class="form-group">
-				<textarea class="form-control" id="jobDescTextArea" rows="5" placeholder="Please enter a job description..."></textarea>
+				<textarea class="form-control" id="jobDescTextArea" rows="5" placeholder="Enter additional notes here..." name="notes"></textarea>
 			</div>
 			<button type="submit" class="btn btn-primary">Post Job Opportunity</button>
 		</form>
