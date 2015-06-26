@@ -32,7 +32,7 @@ a:hover {
 html,
 body {
   height: 100%;
-  background: url(../images/cover_2560.jpg) no-repeat center center fixed; 
+  background: url(../images/cover_2560_mini.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -181,11 +181,11 @@ body {
   border-width: 3px;
   color: #F2F2F2;
   /* CSS Transition */
-  -webkit-transition: background .1s ease-in-out, border .1s ease-in-out;
-  -moz-transition: background .1s ease-in-out, border .1s ease-in-out;
-  -ms-transition: background .1s ease-in-out, border .1s ease-in-out;
-  -o-transition: background .1s ease-in-out, border .1s ease-in-out;
-  transition: background .1s ease-in-out, border .1s ease-in-out;
+  -webkit-transition: background .03s ease-in-out, border .03s ease-in-out;
+  -moz-transition: background .03s ease-in-out, border .03s ease-in-out;
+  -ms-transition: background .03s ease-in-out, border .03s ease-in-out;
+  -o-transition: background .03s ease-in-out, border .03s ease-in-out;
+  transition: background .03s ease-in-out, border .03s ease-in-out;
 }
 
 .btn:hover {
