@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
     });
 });
 
-router.post('/', passport.authenticate('local-signup', {
+router.post('/', passport.authenticate('local-register', {
     successRedirect : '/postings', // redirect to the secure profile section
     failureRedirect : '/register', // redirect back to the signup page if there is an error
     failureFlash : true // allow flash messages
