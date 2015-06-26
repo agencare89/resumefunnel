@@ -1,7 +1,7 @@
 {
-	"name": "NodejsStarterApp",
-	"version": "0.0.1",
-	"description": "A sample nodejs app for Bluemix",
+	"name": "Resume Funnel",
+	"version": "0.1.0",
+	"description": "Resume Funnel makes it quick and easy for you to get your resume seen by potential employers",
 	"scripts": {
 		"start": "node app.js"
 	},
