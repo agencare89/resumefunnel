@@ -111,13 +111,30 @@
 				</div>
 			</div>
 		</div>
+
+		<% if (ownsPost) { %>
+		<h1>Submitted Resumes</h1>
+		<hr />
+		<table id="resumesTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <% } %>
 	</div><!-- /container -->
 
 	<% include common/footer.ejs %>
 
 	<script src="js/lib/jquery-2.1.4.min.js"></script>
 	<script src="js/lib/bootstrap.min.js"></script>
+	<script src="js/lib/jquery.dataTables.min.js"></script>
+    <script src="js/lib/dataTables.bootstrap.js"></script>
 	<script src="js/lib/ie10-viewport-bug-workaround.js"></script>
+	<script src="js/job.js"></script>
 	<script src="js/scripts.js"></script>
 </body>
 </html>
