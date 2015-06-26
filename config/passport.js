@@ -12,7 +12,7 @@ module.exports = function(passport) {
         });
     });
 
-    passport.use('local-signup', new LocalStrategy({
+    passport.use('local-register', new LocalStrategy({
         // by default, local strategy uses username and password, we will override with email
         usernameField : 'email',
         passwordField : 'password',
@@ -25,7 +25,6 @@ module.exports = function(passport) {
             process.nextTick(function() {
                 User.findOne({ 'local.email' :  email }, function(err, user) {
                     if (err) { 
-                        console.log(email);
                         return done(err);
                     }
                     // check to see if theres already a user with that email
@@ -36,8 +35,8 @@ module.exports = function(passport) {
                         // if there is no user with that email create the user
                         var newUser            = new User();
                         // set the user's local credentials
-                        newUser.local.email    = email;
-                        newUser.local.password = newUser.generateHash(password);
+                        newUser.email    = email;
+                        newUser.password = newUser.generateHash(password);
 
                         // save the user
                         newUser.save(function(err) {
