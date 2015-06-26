@@ -5,7 +5,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
 	// TODO: Replace hard-coded user with logged in user information from Passport.io (null if not logged in)
   	res.render('new', { 
-  		user : 'tomfischer',
+  		user : req.user,
   		'new' : 'active'
   	});
 });

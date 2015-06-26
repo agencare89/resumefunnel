@@ -1,12 +1,18 @@
 var express = require('express');
+var passport = require('passport');
 var router = express.Router();
 
-/* GET login page. */
-router.get('/', function(req, res, next) {
-	// TODO: Replace hard-coded user with logged in user information from Passport.io (null if not logged in)
-  	res.render('register', { 
-  		user : null
-  	});
+router.get('/', function(req, res, next) { 
+    res.render('register', { 
+        user : null, 
+        message: req.flash('signupMessage') 
+    });
 });
+
+router.post('/', passport.authenticate('local-signup', {
+    successRedirect : '/postings', // redirect to the secure profile section
+    failureRedirect : '/register', // redirect back to the signup page if there is an error
+    failureFlash : true // allow flash messages
+}));  
 
 module.exports = router;

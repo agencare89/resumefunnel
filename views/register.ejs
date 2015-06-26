@@ -30,14 +30,14 @@
   			<small>Already have an account? Log in <a href="/login">here</a></small>
   		</h1>
   		<hr>
-  		<form role="form">
+  		<form role="form" method="post" action="/register">
   			<div class="row">
   				<div class="col-md-6">
   					<div class="form-group">
   						<label for="firstNameInput">First Name</label>
   						<div class="input-group">
   							<div class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></div>
-  							<input type="text" class="form-control" id="firstNameInput" placeholder="First Name" required>
+  							<input type="text" class="form-control" id="firstNameInput" placeholder="First Name" data-ng-model="firstName" required>
   						</div>
   					</div>
   				</div>
@@ -46,7 +46,7 @@
   						<label for="lastNameInput">Last Name</label>
   						<div class="input-group">
   							<div class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></div>
-  							<input type="text" class="form-control" id="lastNameInput" placeholder="Last Name" required>
+  							<input type="text" class="form-control" id="lastNameInput" placeholder="Last Name" data-ng-model="lastName" required>
   						</div>
   					</div>
   				</div>
@@ -55,7 +55,7 @@
   				<label for="emailInput">Email Address</label>
   				<div class="input-group">
   					<div class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></div>
-  					<input type="text" class="form-control" id="emailInput" placeholder="Email Address" required>
+  					<input type="text" class="form-control" id="emailInput" placeholder="Email Address" data-ng-model="email" required>
   				</div>
   			</div>
   			<div class="row">
@@ -64,7 +64,7 @@
   						<label for="passwordInput">Password</label>
   						<div class="input-group">
   							<div class="input-group-addon"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></div>
-  							<input type="password" class="form-control" id="passwordInput" placeholder="Password" required>
+  							<input type="password" class="form-control" id="passwordInput" placeholder="Password" data-ng-model="password" required>
   						</div>
   					</div>
   				</div>
@@ -82,14 +82,14 @@
   				<label for="companyNameInput">Company Name</label>
   				<div class="input-group">
   					<div class="input-group-addon"><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span></div>
-  					<input type="text" class="form-control" id="companyNameInput" placeholder="Company Name" required>
+  					<input type="text" class="form-control" id="companyNameInput" placeholder="Company Name" data-ng-model="companyName" required>
   				</div>
   			</div>
   			<div class="form-group">
   				<label for="companyLocationInput">Company Location</label>
   				<div class="input-group">
   					<div class="input-group-addon"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></div>
-  					<input type="text" class="form-control" id="companyLocationInput" placeholder="Company Location" required>
+  					<input type="text" class="form-control" id="companyLocationInput" placeholder="Company Location" data-ng-model="companyLocation" required>
   				</div>
   			</div>
   			<p>
