@@ -212,11 +212,11 @@ function degreeWeighting(degreeWeights, output){
 /* GET job posting. */
 router.get('/:job_id', function(req, res, next) {
 	JobPosting.findById(req.params.job_id).populate('employer').exec(function(err, job) {
-		console.log(job);
 		jobObj = job;
+		
 		res.render('job', { 
 			user : req.user,
-			ownsPost : true,
+			ownsPost : job.employer.id && req.user && job.employer.id === req.user._id,
 			job : job
 		});
 	});
