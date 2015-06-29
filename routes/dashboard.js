@@ -8,9 +8,21 @@ router.get('/', function(req, res, next) {
   	res.render('dashboard', { 
   		user : req.user,
   		dashboard : 'active'
-  	});
-    console.log(req.url);
-    console.log("dashboard"); 
+  	}, function(err, ejs) { 
+        if (err) res.send(err); 
+        JobPosting.find(err, jobs) { 
+            if(err) res.send(err);
+            else { 
+                var usersJobs = []; 
+                for (var i = 0; i < jobs.length; i++) { 
+                    if (jobs[i].employerId === req.user.email) { 
+                        usersJobs.push(jobs[i]);
+                    }
+                }
+                res.json(usersJobs); 
+            }
+        });
+    });
     res.end();
 });
 

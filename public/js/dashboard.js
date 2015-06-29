@@ -9,9 +9,9 @@ $(document).ready(function() {
                 data: data,
                 columns: [
                     { data: "jobTitle", sTitle: "Job Title", sClass: "center" },
-                    { data: "company", sTitle: "Company", sClass: "center" },
-                    { data: "location", sTitle: "Location", sClass: "center" },
-                    { data: "deadline", sTitle: "Deadline", sClass: "center" }
+                    { data: "companyName", sTitle: "Company", sClass: "center" },
+                    { data: "jobLocation", sTitle: "Location", sClass: "center" },
+                    { data: "dueDate", sTitle: "Deadline", sClass: "center" }
                 ]
             });
 
@@ -24,9 +24,9 @@ $(document).ready(function() {
             $("#jobPostingsTable").dataTable({
                 columns: [
                     { data: "jobTitle", sTitle: "Job Title", sClass: "center" },
-                    { data: "company", sTitle: "Company", sClass: "center" },
-                    { data: "location", sTitle: "Location", sClass: "center" },
-                    { data: "deadline", sTitle: "Deadline", sClass: "center" }
+                    { data: "companyName", sTitle: "Company", sClass: "center" },
+                    { data: "jobLocation", sTitle: "Location", sClass: "center" },
+                    { data: "dueDate", sTitle: "Deadline", sClass: "center" }
                 ]
             });
         }
