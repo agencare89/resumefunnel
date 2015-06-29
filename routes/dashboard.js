@@ -1,11 +1,9 @@
 var express = require('express');
 var router = express.Router();
+var JobPosting = require('../models/jobPosting');
 
 /* GET dashboard page. */
 router.get('/', loggedIn, function(req, res, next) {
-	// TODO: Replace hard-coded user with logged in user information from Passport.io (null if not logged in)
-    // if you're on the dashboard page, you need to be logged in
-    
     JobPosting.find(function(err, jobs) { 
         if (err) res.send(err); 
         else { 

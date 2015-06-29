@@ -49,7 +49,7 @@ app.use('/login', login);
 app.use('/register', register);
 app.use('/postings', postings);
 app.use('/dashboard', dashboard);
-app.use('/job', job);
+app.use('/job/:job_id', job);
 app.use('/new', newPost);
 
 var appEnv = cfenv.getAppEnv();

@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    $("#jobPostingsTable tr").css('cursor', 'pointer');
+    
 	$.ajax({
         url: "/postings",
         type: "GET",
