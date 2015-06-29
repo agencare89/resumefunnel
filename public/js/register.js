@@ -62,13 +62,6 @@ $(document).ready(function() {
 				message : "Please enter a company name"
 			}]
 		},
-		companyLocation : {
-			group : ".companyLocationGroup",
-			rules : [{
-				type : "empty",
-				message : "Please enter a company location"
-			}]
-		},
 		companyWebsite : {
 			group : ".companyWebsiteGroup",
 			rules : [{
