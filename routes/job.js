@@ -12,11 +12,17 @@ var txtFile;
 var postingText = "";
 var skills = "";
 
+var jobObj;
+
 //Create the AlchemyAPI object
 var AlchemyAPI = require('../alchemyapi_node/alchemyapi');
 var alchemyapi = new AlchemyAPI();
 
 function postProcess(output){
+
+	console.log("----Job OBJ----");
+	console.log(jobObj);
+	console.log("---------------");
 
 	/* Confidence scores */
 	var skillScore = 0.0;
@@ -207,6 +213,7 @@ function degreeWeighting(degreeWeights, output){
 router.get('/:job_id', function(req, res, next) {
 	JobPosting.findById(req.params.job_id).populate('employer').exec(function(err, job) {
 		console.log(job);
+		jobObj = job;
 		res.render('job', { 
 			user : req.user,
 			ownsPost : true,
@@ -216,7 +223,7 @@ router.get('/:job_id', function(req, res, next) {
 });
 
 router.get('/:job_id/.json', function(req, res, next) {
-	JobPosting.findById(req.params.job_id).populate('employer').exec(function(err, jobs) {
+	JobPosting.findById(req.params.job_id).populate('employer').exec(function(err, job) {
 		if (err) res.send(err);
 		
 		res.json({ job : job });
