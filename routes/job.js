@@ -32,6 +32,15 @@ function postProcess(output){
 	var educationWeights = {'McMaster University':9, 'Western University':8, 'Seneca College':6};
 	var degreeWeights = {'Faculty of Engineering Science':9, 'B.Eng Software':8, 'Software Engineering':8};
 
+	JobPosting.findById(req.params.job_id).populate('employer').exec(function(err, jobs) {
+		console.log(job);
+		res.render('job', { 
+			user : req.user,
+			ownsPost : true,
+			job : job
+		});
+	});
+
 	// Compute the weight against the desired qualifications
 	skillScore = skillWeighting(skillWeights);
 	jobTitleScore = jobTitleWeighting(jobTitleWeights, output);
@@ -196,7 +205,7 @@ function degreeWeighting(degreeWeights, output){
 
 /* GET job posting. */
 router.get('/:job_id', function(req, res, next) {
-	JobPosting.findById(req.params.job_id).populate('employer').exec(function(err, jobs) {
+	JobPosting.findById(req.params.job_id).populate('employer').exec(function(err, job) {
 		console.log(job);
 		res.render('job', { 
 			user : req.user,
@@ -229,7 +238,7 @@ router.post('/api/pdf', [multer({ dest: './uploads/',
     	txtFile = 'uploads/' + txtFile;
 
         // for testing on a Windows machine, replace with backward slashes
-    	exec('ext_libs/pdftotext_mac -eol unix ' + file.path, function (error, stdout, stderr) {
+    	exec('ext_libs/pdftotext_prod -eol unix ' + file.path, function (error, stdout, stderr) {
 
             var fs = require('fs');
 
