@@ -28,55 +28,33 @@
 		<div class="row">
 			<div class="col-md-8">
 				<h1>
-					Software Developer - User Interfaces<br>
-					<small>Application Due Date: 24/06/2015</small>
+					<%= job.jobTitle %><br>
+					<small>Application Due Date: <%= job.dueDate %></small>
 				</h1>
 				<hr />
 				<h2>Job Description</h2>
 				<p>
-					We are looking for self-starting, motivated, and innovative team player with proven communication skills to be part of a very dynamic team at IBM. You will be part of the IBM Social Media Analytics team and will be using leading technologies to grow your skills and experience, such as Cloud Computing, Web 2.0, java, automation and big data analysis. IBM Social Media Analytics is a powerful application meant to transform social media from millions of online data sources into customer actionable insight.
+					<%= job.jobDescription %>
 				</p>
 
 				<h2>Desirable Qualifications</h2>
 				<ul class="list-group">
-					<%  %>
-					<li class="list-group-item">BS, MS, or PhD in Computer Science or equivalent work experience</li>
-					<li class="list-group-item">Agile, scrum or Extreme Programming experiences. Time management skills and dedication to project success.</li>
-					<li class="list-group-item">Proven verbal and written communication skills</li>
-					<li class="list-group-item">Proven teamwork skills</li>
-					<li class="list-group-item">Java</li>
-					<li class="list-group-item">Experience in test automation</li>
-					<li class="list-group-item">Javascript, Node.js</li>
+					<% job.qualifications.forEach(function(item, i) { %>
+						<li class="list-group-item"><%= item %></li>
+					<% }); %>
 				</ul>
 
 				<h2>Minimum Requirements</h2>
 				<ul class="list-group">
-					<li class="list-group-item">Bachelor's Degree</li>
-					<li class="list-group-item">At least 1 year experience in Test automation</li>
-					<li class="list-group-item">At least 1 year experience in Java</li>
-					<li class="list-group-item">At least 1 year experience in Agile, Scrum or Extreme programming/software development</li>
-					<li class="list-group-item">English: Fluent</li>
+					<% job.requirements.forEach(function(item, i) { %>
+						<li class="list-group-item"><%= item %></li>
+					<% }); %>
 				</ul>
 
 				<h2>Other Notes</h2>
 				<p>
-					This role will involve working with technology that is covered by embargo Export Regulations.  If you are a Foreign National from any of the following embargoed countries (Cuba, Iran, North  Korea, Sudan, Syria) on a work permit, you are not eligible for employment in this position
+					<%= job.notes %>
 				</p>
-
-				<hr />
-
-				<form  id        =  "uploadForm"
-			           enctype   =  "multipart/form-data"
-			           action    =  "/api/pdf"
-			           method    =  "post">
-					<div class="form-group">
-						<label for="resumeUploadFile">Upload your resume!</label>
-						<input type="file" id="resumeUploadFile" name="userPDF">
-					</div>
-					<div class="form-group">
-						<input class="btn btn-primary" type="submit" value="Upload PDF" name="submit">
-					</div>
-				</form>
 			</div>
 			<div class="col-md-4">
 				<div class="panel panel-default">
@@ -118,6 +96,18 @@
 				</div>
 			</div>
 		</div>
+
+		<hr />
+
+		<form id =  "uploadForm" enctype = "multipart/form-data" action = "/api/pdf" method = "post">
+	        <h3>Upload Your Resume!</h3>
+			<div class="form-group">
+				<input class="btn btn-default" type="file" id="resumeUploadFile" name="userPDF">
+			</div>
+			<div class="form-group">
+				<input class="btn btn-primary" type="submit" value="Upload PDF" name="submit">
+			</div>
+		</form>
 
 		<% if (ownsPost) { %>
 		<h1>Submitted Resumes</h1>

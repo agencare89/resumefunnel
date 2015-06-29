@@ -206,7 +206,7 @@ router.get('/:job_id', function(req, res, next) {
 });
 
 router.get('/:job_id/.json', function(req, res, next) {
-	JobPosting.findById(req.params.job_id).populate('employer').exec(function(err, jobs) {
+	JobPosting.findById(req.params.job_id).populate('employer').exec(function(err, job) {
 		if (err) res.send(err);
 		
 		res.json({ job : job });
