@@ -35,7 +35,7 @@
 		<form role="form" method="post" action="/new">
 			<h3>Job Title</h3>
 			<div class="form-group">
-				<input type="text" class="form-control" id="firstNameInput" placeholder="Job Title" name="jobTitle">
+				<input type="text" class="form-control" id="firstNameInput" placeholder="Job Title" name="jobTitle" required>
 			</div>
 
 			<h3>Job Description</h3>
@@ -50,7 +50,7 @@
 
 			<h3>Desirable Qualifications</h3>
 			<div class="form-group qualifications">
-				<input type="text" class="form-control qualificationInput" placeholder="Qualification" name="qualifications" />
+				<input type="text" class="form-control qualificationInput" placeholder="Qualification" name="qualificationString" />
 			</div>
 			<div class="form-group">
 				<button type="button" class="btn btn-default addQualification">Add Field <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
@@ -89,12 +89,12 @@
 			<div class="row skillsRow">
 				<div class="col-md-6">
 					<div class="form-group">
-						<input type="text" class="form-control skillInput" placeholder="Skill" />
+						<input type="text" class="form-control skillInput" placeholder="Skill" name="desiredSkillsKeys"/>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
-						<input type="text" class="skillsSlider" value="" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="5" />
+						<input type="text" class="skillsSlider" value="5" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="5" name="desiredSkillsValues"/>
 					</div>
 				</div>
 			</div>
@@ -106,12 +106,12 @@
 			<div class="row degreeRow">
 				<div class="col-md-6">
 					<div class="form-group">
-						<input type="text" class="form-control degreeInput" placeholder="Degree" />
+						<input type="text" class="form-control degreeInput" placeholder="Degree"  name="desiredDegreesKeys"/>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
-						<input type="text" class="degreeSlider" value="" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="5" />
+						<input type="text" class="degreeSlider" value="5" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="5" name="desiredDegreesValues"/>
 					</div>
 				</div>
 			</div>
@@ -123,12 +123,12 @@
 			<div class="row instituteRow">
 				<div class="col-md-6">
 					<div class="form-group">
-						<input type="text" class="form-control instituteInput" placeholder="Institute" />
+						<input type="text" class="form-control instituteInput" placeholder="Institute" name="desiredSchoolsKeys"/>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
-						<input type="text" class="instituteSlider" value="" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="5" />
+						<input type="text" class="instituteSlider" value="5" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="5" name="desiredSchoolsValues"/>
 					</div>
 				</div>
 			</div>
@@ -140,12 +140,12 @@
 			<div class="row jobRow">
 				<div class="col-md-6">
 					<div class="form-group">
-						<input type="text" class="form-control jobInput" placeholder="Job" />
+						<input type="text" class="form-control jobInput" placeholder="Job" name="desiredJobsKeys"/>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
-						<input type="text" class="jobSlider" value="" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="5" />
+						<input type="text" class="jobSlider" value="5" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="5" name="desiredJobsValues"/>
 					</div>
 				</div>
 			</div>
@@ -157,12 +157,12 @@
 			<div class="row companyRow">
 				<div class="col-md-6">
 					<div class="form-group">
-						<input type="text" class="form-control companyInput" placeholder="Company" />
+						<input type="text" class="form-control companyInput" placeholder="Company" name="desiredCompaniesKeys"/>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
-						<input type="text" class="companySlider" value="" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="5" />
+						<input type="text" class="companySlider" value="5" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="5" name="desiredCompaniesValues"/>
 					</div>
 				</div>
 			</div>
@@ -172,7 +172,7 @@
 
 			<hr>
 
-			<button type="submit" class="btn btn-primary">Post Job Opportunity</button>
+            <a href="/new" class="btn btn-primary">Post Job Opportunity</a>
 		</form>
 	</div><!-- /container -->
 

@@ -4,6 +4,14 @@ var JobPosting = require('../models/jobPosting');
 
 /* GET dashboard page. */
 router.get('/', loggedIn, function(req, res, next) {
+    res.render('dashboard', { 
+        user : req.user, 
+        dashboard : 'active', 
+        data : usersJobs
+    });
+});
+
+router.get('/.json', loggedIn, function(req, res, next) {
     JobPosting.find(function(err, jobs) { 
         if (err) res.send(err); 
         else { 
@@ -14,11 +22,7 @@ router.get('/', loggedIn, function(req, res, next) {
                 }
             }
             
-            res.render('dashboard', { 
-                user : req.user, 
-                dashboard : 'active', 
-                data : usersJobs
-            });
+            res.send({ data : usersJobs });
         }
     }); 
 });
