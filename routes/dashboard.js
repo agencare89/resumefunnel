@@ -9,6 +9,9 @@ router.get('/', function(req, res, next) {
   		user : req.user,
   		dashboard : 'active'
   	});
+    console.log(req.url);
+    console.log("dashboard"); 
+    res.end();
 });
 
 module.exports = router;

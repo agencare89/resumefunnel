@@ -5,6 +5,8 @@ var mongoose = require('mongoose');
 var jobPostingSchema = mongoose.Schema({
     jobTitle            : String, 
     jobDescription      : String,
+    jobLocation         : String,
+    companyName         : String,
     qualifications      : [], 
     requirements        : [],
     notes               : String, 

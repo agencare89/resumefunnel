@@ -14,21 +14,24 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) { 
     var newJob = new JobPosting();
     newJob.jobTitle = req.body.jobTitle; 
-    newJob.jobDescription = req.body.jobDescription; 
+    newJob.jobDescription = req.body.jobDescription;
+
+    var qualifications = req.body.qualifications;
+    newJob.qualifications = [];
     
-    var qualifications = req.body.qualifications; 
     for (var i = 0; i < qualifications.length; i++) { 
-        if(qualifications[i].trim() === "")
-            qualifications.splice(i,1);   
+        if(qualifications[i].trim() !== "")
+            newJob.qualifications.push(qualifications[i]);
     }
-    newJob.qualifications = qualifications; 
     
-    var requirements = req.body.requirements; 
+    var requirements = req.body.requirements;
+    newJob.requirements = [];
+    
     for (var j = 0; j < requirements.length; j++) { 
-        if(requirements[j].trim() === "") 
-            requirements.splice(j,1);
+        if(requirements[j].trim() !== "") 
+            newJob.requirements.push(requirements[j]);
     }
-    newJob.requirements = requirements;
+    
     newJob.dueDate = req.body.dueDate; 
     newJob.notes = req.body.notes;
     
@@ -38,4 +41,5 @@ router.post('/', function(req, res, next) {
         res.send();
     });
 });
+
 module.exports = router;
