@@ -7,27 +7,32 @@ $(document).ready(function() {
         dataType: "json",
         cache: true,
         success: function(data) {
-        	$("#jobPostingsTable").dataTable({
+            console.log(JSON.stringify(data), null, 2);
+
+        	var table = $("#jobPostingsTable").dataTable({
         		data: data,
                 columns: [
-                    { data: "jobs.jobTitle", sTitle: "Job Title", sClass: "center" },
-                    { data: "user.companyName", sTitle: "Company", sClass: "center" },
-                    { data: "jobs.jobLocation", sTitle: "Location", sClass: "center" },
-                    { data: "jobs.dueDate", sTitle: "Deadline", sClass: "center" }
+                    { data: "_id", visible: false },
+                    { data: "jobTitle", sTitle: "Job Title", sClass: "center" },
+                    { data: "employer.companyName", sTitle: "Company", sClass: "center" },
+                    { data: "jobLocation", sTitle: "Location", sClass: "center" },
+                    { data: "dueDate", sTitle: "Deadline", sClass: "center" }
                 ]
             });
 
-            $('#jobPostingsTable tbody').on('click', 'tr', function() {
-                window.location.href = "/job/" + $('td', this).eq(0).text();
+            table.$('tr').click(function () {
+                var data = table.fnGetData(this);
+                window.location.href = "/job/" + data._id;
             });
 		},
         error: function (jqXHR, textStatus, errorThrown) {
             $("#jobPostingsTable").dataTable({
                 columns: [
-                    { data: "jobs.jobTitle", sTitle: "Job Title", sClass: "center" },
-                    { data: "user.companyName", sTitle: "Company", sClass: "center" },
-                    { data: "jobs.jobLocation", sTitle: "Location", sClass: "center" },
-                    { data: "jobs.dueDate", sTitle: "Deadline", sClass: "center" }
+                    { data: "_id", visible: false },
+                    { data: "jobTitle", sTitle: "Job Title", sClass: "center" },
+                    { data: "employer.companyName", sTitle: "Company", sClass: "center" },
+                    { data: "jobLocation", sTitle: "Location", sClass: "center" },
+                    { data: "dueDate", sTitle: "Deadline", sClass: "center" }
                 ]
             });
         }

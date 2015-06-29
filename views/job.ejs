@@ -79,7 +79,7 @@
 			</div>
 			<div class="col-md-4">
 				<div class="panel panel-default">
-					<div class="panel-heading text-center"><strong><%= contact.companyName %></strong></div>
+					<div class="panel-heading text-center"><strong><%= companyName %></strong></div>
 					<div class="company-logo">
 						<img src="<%= contact.companyLogo %>" />
 					</div>
@@ -92,25 +92,25 @@
 								<td>Job Location</td>
 								<td>
 									<address class="remove-margin">
-										<%= contact.companyLocation %>
+										<%= companyLocation %>
 									</address>
 								</td>
 							</tr>
 							<tr>
 								<td>Contact Name</td>
-								<td><%= contact.firstName %> <%= contact.lastName %></td>
+								<td><%= employer.firstName %> <%= employer.lastName %></td>
 							</tr>
 							<tr>
 								<td>Website</td>
-								<td><a href="<%= contact.companyWebsite %>" target="_blank"><%= contact.companyWebsite %></td>
+								<td><a href="<%= contact.companyWebsite %>" target="_blank"><%= employer.companyWebsite %></td>
 							</tr>
 							<tr>
 								<td>Phone</td>
-								<td><%= contact.phoneNumber %></td>
+								<td><%= employer.phoneNumber %></td>
 							</tr>
 							<tr>
 								<td>Email</td>
-								<td><%= contact.email %></td>
+								<td><%= employer.email %></td>
 							</tr>
 						</tbody>
 					</table>

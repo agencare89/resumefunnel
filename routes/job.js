@@ -195,26 +195,22 @@ function degreeWeighting(degreeWeights, output){
 }
 
 /* GET job posting. */
-router.get('/', function(req, res, next) {
-	res.render('job', { 
-		user : req.user,
-		ownsPost : true
+router.get('/:job_id', function(req, res, next) {
+	JobPosting.findById(req.params.job_id).populate('employer').exec(function(err, jobs) {
+		console.log(job);
+		res.render('job', { 
+			user : req.user,
+			ownsPost : true,
+			job : job
+		});
 	});
 });
 
-router.get('/.json', function(req, res, next) {
-	JobPosting.findById(req.params.job_id, function(err, job) {
+router.get('/:job_id/.json', function(req, res, next) {
+	JobPosting.findById(req.params.job_id).populate('employer').exec(function(err, jobs) {
 		if (err) res.send(err);
 		
 		res.json({ job : job });
-	});
-});
-
-router.get('/resumes.json', function(req, res, next) {
-	Resume.find(function(err, resumes) {
-		if (err) res.send(err);
-		
-		res.json({ resumes : resumes });
 	});
 });
 

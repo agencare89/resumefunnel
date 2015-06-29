@@ -1,5 +1,7 @@
 //user.js
 var mongoose = require('mongoose');
+var User = require('../models/user.js');
+var Resume = require('../models/resume.js');
 
 // define the schema for our user model
 var jobPostingSchema = mongoose.Schema({
@@ -10,7 +12,8 @@ var jobPostingSchema = mongoose.Schema({
     requirements        : [],
     notes               : String, 
     dueDate             : String,
-    employerId          : String,
+    employer            : { type : mongoose.Schema.Types.ObjectId, ref : 'User' },
+    resumes             : [{ type : mongoose.Schema.Types.ObjectId, ref : 'Resume' }],
     employerOnly        : { 
             desiredSkills   : { 
                 key     : [],

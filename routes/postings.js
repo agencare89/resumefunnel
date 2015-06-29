@@ -13,16 +13,10 @@ router.get('/', function(req, res, next) {
 
 /* GET home page. */
 router.get('/.json', function(req, res, next) {
-    JobPosting.find(function(err, jobs) {
+    JobPosting.find({}).populate('employer').exec(function(err, jobs) {
         if(err) res.send(err);
 
-        /*User.findById(jobsfunction(err, user) {
-
-        });*/
-
-        console.log(req.user);
-
-        res.json({ jobs : jobs, user : req.user });
+        res.json(jobs);
     });
 });
 
