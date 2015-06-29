@@ -11,8 +11,8 @@
 
 	<title>Software Developer - User Interfaces</title>
 
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/styles.css" rel="stylesheet">
+	<link href="../css/bootstrap.min.css" rel="stylesheet">
+	<link href="../css/styles.css" rel="stylesheet">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -39,6 +39,7 @@
 
 				<h2>Desirable Qualifications</h2>
 				<ul class="list-group">
+					<%  %>
 					<li class="list-group-item">BS, MS, or PhD in Computer Science or equivalent work experience</li>
 					<li class="list-group-item">Agile, scrum or Extreme Programming experiences. Time management skills and dedication to project success.</li>
 					<li class="list-group-item">Proven verbal and written communication skills</li>
@@ -73,15 +74,15 @@
 						<input type="file" id="resumeUploadFile" name="userPDF">
 					</div>
 					<div class="form-group">
-						<input type="submit" value="Upload PDF" name="submit">
+						<input class="btn btn-primary" type="submit" value="Upload PDF" name="submit">
 					</div>
 				</form>
 			</div>
 			<div class="col-md-4">
 				<div class="panel panel-default">
-					<div class="panel-heading text-center"><strong><%= companyName %></strong></div>
+					<div class="panel-heading text-center"><strong><%= job.employer.companyName %></strong></div>
 					<div class="company-logo">
-						<img src="<%= contact.companyLogo %>" />
+						<img src="<%= job.employer.companyLogo %>" />
 					</div>
 					<table class="table table-bordered">
 						<thead>
@@ -92,25 +93,25 @@
 								<td>Job Location</td>
 								<td>
 									<address class="remove-margin">
-										<%= companyLocation %>
+										<%= job.companyLocation %>
 									</address>
 								</td>
 							</tr>
 							<tr>
 								<td>Contact Name</td>
-								<td><%= employer.firstName %> <%= employer.lastName %></td>
+								<td><%= job.employer.firstName %> <%= job.employer.lastName %></td>
 							</tr>
 							<tr>
 								<td>Website</td>
-								<td><a href="<%= contact.companyWebsite %>" target="_blank"><%= employer.companyWebsite %></td>
+								<td><a href="<%= job.employer.companyWebsite %>" target="_blank"><%= job.employer.companyWebsite %></td>
 							</tr>
 							<tr>
 								<td>Phone</td>
-								<td><%= employer.phoneNumber %></td>
+								<td><%= job.employer.phoneNumber %></td>
 							</tr>
 							<tr>
 								<td>Email</td>
-								<td><%= employer.email %></td>
+								<td><%= job.employer.email %></td>
 							</tr>
 						</tbody>
 					</table>
@@ -135,12 +136,12 @@
 
 	<% include common/footer.ejs %>
 
-	<script src="js/lib/jquery-2.1.4.min.js"></script>
-	<script src="js/lib/bootstrap.min.js"></script>
-	<script src="js/lib/jquery.dataTables.min.js"></script>
-    <script src="js/lib/dataTables.bootstrap.js"></script>
-	<script src="js/lib/ie10-viewport-bug-workaround.js"></script>
-	<script src="js/job.js"></script>
-	<script src="js/scripts.js"></script>
+	<script src="../js/lib/jquery-2.1.4.min.js"></script>
+	<script src="../js/lib/bootstrap.min.js"></script>
+	<script src="../js/lib/jquery.dataTables.min.js"></script>
+    <script src="../js/lib/dataTables.bootstrap.js"></script>
+	<script src="../js/lib/ie10-viewport-bug-workaround.js"></script>
+	<script src="../js/job.js"></script>
+	<script src="../js/scripts.js"></script>
 </body>
 </html>
