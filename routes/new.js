@@ -25,7 +25,7 @@ router.post('/', function(req, res, next) {
         }
     }
     var qualKeys = req.body.employerOnly.qualificationVal;
-    for (var j = 0; j < qualKeys.length; i++) { 
+    for (var j = 0; j < qualKeys.length; j++) { 
         // check the string array, if its empty then dont push a value into the parallel array for it
         if (quals[j].trim() !== "") { 
             newJob.employerOnly.qualificationVal.push(qualKeys[j]); 

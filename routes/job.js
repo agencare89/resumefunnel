@@ -18,6 +18,8 @@ router.get('/', function(req, res, next) {
 
 router.get('/resumes', function(req, res, next) {
 	Resume.find(function(err, resumes) {
+		if (err) res.send(err);
+		
 		res.json({ resumes : resumes });
 	});
 });
