@@ -13,6 +13,7 @@
 
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+	<link href="css/slider.css" rel="stylesheet">
 	<link href="css/styles.css" rel="stylesheet">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -49,7 +50,7 @@
 
 			<h3>Desirable Qualifications</h3>
 			<div class="form-group qualifications">
-				<input type="text" class="form-control" class="qualificationInput" placeholder="Qualification" name="qualifications" required />
+				<input type="text" class="form-control qualificationInput" placeholder="Qualification" name="qualifications" />
 			</div>
 			<div class="form-group">
 				<button type="button" class="btn btn-default addQualification">Add Field <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
@@ -57,7 +58,7 @@
 
 			<h3>Minimum Requirements</h3>
 			<div class="form-group requirements">
-				<input type="text" class="form-control" class="requirementInput" placeholder="Requirement" name="requirements" required />
+				<input type="text" class="form-control" class="requirementInput" placeholder="Requirement" name="requirements" />
 			</div>
 			<div class="form-group">
 				<button type="button" class="btn btn-default addRequirement">Add Field <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
@@ -75,6 +76,102 @@
 			<div class="form-group">
 				<textarea class="form-control" id="jobDescTextArea" rows="5" placeholder="Enter additional notes here..." name="notes"></textarea>
 			</div>
+
+			<h2>
+				Resume Ranking Attributes<br>
+				<small>
+					This information will not be displayed in the job post. Instead, it will be used for ranking resumes. Beside each input, rank each attribute with a weight from 0 to 10. <strong>Limit each input to 1 attribute each.</strong>
+				</small>
+			</h2>
+			<hr>
+
+			<h3>Desired Skills/Knowledge <small>e.g. C++, English, or Microsoft Excel</small></h3>
+			<div class="row skillsRow">
+				<div class="col-md-6">
+					<div class="form-group">
+						<input type="text" class="form-control skillInput" placeholder="Skill" />
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<input type="text" class="skillsSlider" value="" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="5" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<button type="button" class="btn btn-default addSkill">Add Field <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
+			</div>
+
+			<h3>Desired Degrees <small>e.g. Bachelor of Engineering Science, Bachelor of Science, or Master of Computer Science</small></h3>
+			<div class="row degreeRow">
+				<div class="col-md-6">
+					<div class="form-group">
+						<input type="text" class="form-control degreeInput" placeholder="Degree" />
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<input type="text" class="degreeSlider" value="" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="5" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<button type="button" class="btn btn-default addDegree">Add Field <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
+			</div>
+
+			<h3>Desired Post-Secondary Institutes <small>e.g. Western University, University of Waterloo, or Fanshawe College</small></h3>
+			<div class="row instituteRow">
+				<div class="col-md-6">
+					<div class="form-group">
+						<input type="text" class="form-control instituteInput" placeholder="Institute" />
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<input type="text" class="instituteSlider" value="" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="5" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<button type="button" class="btn btn-default addInstitute">Add Field <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
+			</div>
+
+			<h3>Desired Past Jobs <small>e.g. Construction Worker, Elementary School Teacher, or Software Engineer</small></h3>
+			<div class="row jobRow">
+				<div class="col-md-6">
+					<div class="form-group">
+						<input type="text" class="form-control jobInput" placeholder="Job" />
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<input type="text" class="jobSlider" value="" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="5" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<button type="button" class="btn btn-default addJob">Add Field <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
+			</div>
+
+			<h3>Desired Past Companies <small>e.g. Google, Bruce Power, or CBC</small></h3>
+			<div class="row companyRow">
+				<div class="col-md-6">
+					<div class="form-group">
+						<input type="text" class="form-control companyInput" placeholder="Company" />
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<input type="text" class="companySlider" value="" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="5" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<button type="button" class="btn btn-default addCompany">Add Field <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
+			</div>
+
+			<hr>
+
 			<button type="submit" class="btn btn-primary">Post Job Opportunity</button>
 		</form>
 	</div><!-- /container -->
@@ -85,6 +182,7 @@
 	<script src="js/lib/bootstrap.min.js"></script>
 	<script src="js/lib/moment.min.js"></script>
 	<script src="js/lib/bootstrap-datetimepicker.js"></script>
+	<script src="js/lib/bootstrap-slider.js"></script>
 	<script src="js/lib/ie10-viewport-bug-workaround.js"></script>
 	<script src="js/new.js"></script>
 	<script src="js/scripts.js"></script>
