@@ -19,7 +19,7 @@ router.post('/', function(req, res, next) {
     newJob.jobLocation = req.body.jobLocation;
 
     var quals = req.body.qualificationString; 
-    for (var i = 0; i < qauls.length; i++) { 
+    for (var i = 0; i < quals.length; i++) { 
         if (quals[i].trim() !== "") { 
             newJob.qualificationString.push(quals[i]);
         }
