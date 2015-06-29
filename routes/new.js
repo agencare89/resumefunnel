@@ -11,7 +11,7 @@ router.get('/', loggedIn, function(req, res, next) {
   	});
 });
 
-router.post('/', function(req, res, next) { 
+router.post('/', loggedIn, function(req, res, next) { 
     var newJob = new JobPosting();
     newJob.jobTitle = req.body.jobTitle; 
     newJob.jobDescription = req.body.jobDescription;
@@ -49,7 +49,7 @@ router.post('/', function(req, res, next) {
 
     newJob.dueDate = req.body.dueDate; 
     newJob.notes = req.body.notes;
-    newJob.employer = req.user.id;
+    newJob.employer = req.user._id;
     
     /*  The employer only information requires 5 arrays to be stored. These arrays will define the unique 
         qualities that an employer is looking for. This information will be stored in the mongoDB database

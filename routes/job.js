@@ -196,8 +196,7 @@ function degreeWeighting(degreeWeights, output){
 
 /* GET job posting. */
 router.get('/:job_id', function(req, res, next) {
-	JobPosting.findById(req.params.job_id).populate('employer').exec(function(err, jobs) {
-		console.log(job);
+	JobPosting.findById(req.params.job_id).populate('employer').exec(function(err, job) {
 		res.render('job', { 
 			user : req.user,
 			ownsPost : true,
