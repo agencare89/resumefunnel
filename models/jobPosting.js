@@ -6,13 +6,16 @@ var jobPostingSchema = mongoose.Schema({
     jobTitle            : String, 
     jobDescription      : String,
     jobLocation         : String,
-    qualificationString : [],
+    qualifications      : [],
     requirements        : [],
     notes               : String, 
     dueDate             : String,
     employerId          : String,
     employerOnly        : { 
-            qualificationVal: [],
+            desiredSkills   : { 
+                key     : [],
+                value   : []
+            },
             desiredDegrees  : { 
                 key     : [],
                 value   : [] 

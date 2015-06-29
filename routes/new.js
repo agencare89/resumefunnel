@@ -18,23 +18,16 @@ router.post('/', function(req, res, next) {
     newJob.jobDescription = req.body.jobDescription;
     newJob.jobLocation = req.body.jobLocation;
 
-    var quals = req.body.qualificationString; 
+    if(req.body.qualificationString) var quals = req.body.qualificationString; 
     for (var i = 0; i < quals.length; i++) { 
-        if (quals[i].trim() !== "") { 
-            newJob.qualificationString.push(quals[i]);
-        }
-    }
-    var qualKeys = req.body.employerOnly.qualificationVal;
-    for (var j = 0; j < qualKeys.length; i++) { 
-        // check the string array, if its empty then dont push a value into the parallel array for it
-        if (quals[j].trim() !== "") { 
-            newJob.employerOnly.qualificationVal.push(qualKeys[j]); 
+        if (quals[i] !== "") { 
+            newJob.qualifications.push(quals[i]);
         }
     }
     
-    var requirements = req.body.requirements;    
+    if(req.body.requirements) var requirements = req.body.requirements;    
     for (var k = 0; k < requirements.length; k++) { 
-        if(requirements[k].trim() !== "") 
+        if(requirements[k] !== "") 
             newJob.requirements.push(requirements[k]);
     } 
     
@@ -45,32 +38,43 @@ router.post('/', function(req, res, next) {
     /*  The employer only information requires 5 arrays to be stored. These arrays will define the unique 
         qualities that an employer is looking for. This information will be stored in the mongoDB database
         so that Watson will be able to use it and score resumes accordingly                             */ 
-    
-    var desiredJobs = req.body.employerOnly.desiredJobs;
-    for (var a = 0; a < desiredJobs.length; a++) { 
-        if (desiredJobs[a].trim() !== "") { 
-            newJob.employerOnly.desiredJobs.key.push(desiredJobs[a]);
+    if(req.body.desiredSkillsKeys) var desiredSkills = req.body.desiredSkillsKeys; 
+    for(var a = 0; a < desiredSkills.length; a++) { 
+        if(desiredSkills[a] !== "") { 
+            newJob.employerOnly.desiredSkills.key.push(desiredSkills[a]); 
+            newJob.employerOnly.desiredSkills.value.push(req.body.desiredSkillsValues[a]);
         }
     }
     
-    var desiredCompanies = req.body.employerOnly.desiredCompanies; 
-    for (var b = 0; b < desiredCompanies.length; b++) { 
-        if (desiredCompanies[b].trim() !== "") { 
-            newJob.employerOnly.desiredCompanies.key.push(desiredCompanies[b]);   
+    if(req.body.desiredJobsKeys) var desiredJobs = req.body.desiredJobsKeys;
+    for (var b = 0; b < desiredJobs.length; b++) { 
+        if (desiredJobs[b] !== "") { 
+            newJob.employerOnly.desiredJobs.key.push(desiredJobs[b]);
+            newJob.employerOnly.desiredJobs.value.push(req.body.desiredJobsValues[b]);
         }
     }
     
-    var desiredSchools = req.body.employerOnly.desiredSchools; 
-    for (var c = 0; c < desiredSchools.length; c++) { 
-        if (desiredSchools[c].trim() !== "") { 
-            newJob.employerOnly.desiredSchools.key.push(desiredSchools[c]);
+    if(req.body.desiredCompaniesKeys) var desiredCompanies = req.body.desiredCompaniesKeys; 
+    for (var c = 0; c < desiredCompanies.length; c++) { 
+        if (desiredCompanies[c].trim() !== "") { 
+            newJob.employerOnly.desiredCompanies.key.push(desiredCompanies[c]);
+            newJob.employerOnly.desiredCompanies.value.push(req.body.desiredCompaniesValues[c]);
         }
     }
     
-    var desiredDegrees = req.body.employerOnly.desiredDegrees;
-    for (var d = 0; d < desiredDegrees.length; d++) { 
-        if (desiredDegrees[d].trim() !== "") { 
-            newJob.employerOnly.desiredDegrees.key.push(desiredDegrees[d]);
+    if(req.body.desiredSchoolsKeys) var desiredSchools = req.body.desiredSchoolsKeys; 
+    for (var d = 0; d < desiredSchools.length; d++) { 
+        if (desiredSchools[d] !== "") { 
+            newJob.employerOnly.desiredSchools.key.push(desiredSchools[d]);
+            newJob.employerOnly.desiredSchools.value.push(req.body.desiredSchoolsValues[d]);
+        }
+    }
+    
+    if(req.body.desiredDegreesKeys) var desiredDegrees = req.body.desiredDegreesKeys;
+    for (var e = 0; e < desiredDegrees.length; e++) { 
+        if (desiredDegrees[e] !== "") { 
+            newJob.employerOnly.desiredDegrees.key.push(desiredDegrees[e]);
+            newJob.employerOnly.desiredDegrees.value.push(req.body.desiredDegreesValues[e]);
         }
     }
     

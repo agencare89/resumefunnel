@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	$('.addQualification').click(function() {
 		$('.qualifications').last().after("<div class=\"form-group qualifications\">\
-											<input type=\"text\" class=\"form-control\" class=\"qualificationInput\" placeholder=\"Qualification\" name=\"qualifications\" />\ </div>");
+											<input type=\"text\" class=\"form-control\" class=\"qualificationInput\" placeholder=\"Qualification\" name=\"qualificationString\" />\ </div>");
 	});
 
 	$('.addRequirement').click(function() {
@@ -23,12 +23,12 @@ $(document).ready(function() {
 		$('.skillsRow').last().after("<div class=\"row skillsRow\">\
 				<div class=\"col-md-6\">\
 					<div class=\"form-group\">\
-						<input type=\"text\" class=\"form-control skillInput\" placeholder=\"Skill\" />\
+						<input type=\"text\" class=\"form-control skillInput\" placeholder=\"Skill\" name=\"desiredSkillsKeys\"/>\
 					</div>\
 				</div>\
 				<div class=\"col-md-6\">\
 					<div class=\"form-group\">\
-						<input type=\"text\" class=\"skillsSlider\" value=\"\" data-slider-min=\"0\" data-slider-max=\"10\" data-slider-step=\"1\" data-slider-value=\"5\" />\
+						<input type=\"text\" class=\"skillsSlider\" value=\"5\" data-slider-min=\"0\" data-slider-max=\"10\" data-slider-step=\"1\" data-slider-value=\"5\" name=\"desiredSkillsValues\"/>\
 					</div>\
 				</div>\
 			</div>");
@@ -40,12 +40,12 @@ $(document).ready(function() {
 		$('.degreeRow').last().after("<div class=\"row degreeRow\">\
 				<div class=\"col-md-6\">\
 					<div class=\"form-group\">\
-						<input type=\"text\" class=\"form-control degreeInput\" placeholder=\"Degree\" />\
+						<input type=\"text\" class=\"form-control degreeInput\" placeholder=\"Degree\" name=\"desiredDegreesKeys\"/>\
 					</div>\
 				</div>\
 				<div class=\"col-md-6\">\
 					<div class=\"form-group\">\
-						<input type=\"text\" class=\"degreeSlider\" value=\"\" data-slider-min=\"0\" data-slider-max=\"10\" data-slider-step=\"1\" data-slider-value=\"5\" />\
+						<input type=\"text\" class=\"degreeSlider\" value=\"5\" data-slider-min=\"0\" data-slider-max=\"10\" data-slider-step=\"1\" data-slider-value=\"5\" name=\"desiredDegreesValues\"/>\
 					</div>\
 				</div>\
 			</div>");
@@ -57,12 +57,12 @@ $(document).ready(function() {
 		$('.instituteRow').last().after("<div class=\"row instituteRow\">\
 				<div class=\"col-md-6\">\
 					<div class=\"form-group\">\
-						<input type=\"text\" class=\"form-control instituteInput\" placeholder=\"Institute\" />\
+						<input type=\"text\" class=\"form-control instituteInput\" placeholder=\"Institute\" name=\"desiredSchoolsKeys\"/>\
 					</div>\
 				</div>\
 				<div class=\"col-md-6\">\
 					<div class=\"form-group\">\
-						<input type=\"text\" class=\"instituteSlider\" value=\"\" data-slider-min=\"0\" data-slider-max=\"10\" data-slider-step=\"1\" data-slider-value=\"5\" />\
+						<input type=\"text\" class=\"instituteSlider\" value=\"5\" data-slider-min=\"0\" data-slider-max=\"10\" data-slider-step=\"1\" data-slider-value=\"5\" name=\"desiredSchoolsValues\"/>\
 					</div>\
 				</div>\
 			</div>");
@@ -74,12 +74,12 @@ $(document).ready(function() {
 		$('.jobRow').last().after("<div class=\"row jobRow\">\
 				<div class=\"col-md-6\">\
 					<div class=\"form-group\">\
-						<input type=\"text\" class=\"form-control jobInput\" placeholder=\"Job\" />\
+						<input type=\"text\" class=\"form-control jobInput\" placeholder=\"Job\" name=\"employerOnly.desiredJobs.keys\"/>\
 					</div>\
 				</div>\
 				<div class=\"col-md-6\">\
 					<div class=\"form-group\">\
-						<input type=\"text\" class=\"jobSlider\" value=\"\" data-slider-min=\"0\" data-slider-max=\"10\" data-slider-step=\"1\" data-slider-value=\"5\" />\
+						<input type=\"text\" class=\"jobSlider\" value=\"5\" data-slider-min=\"0\" data-slider-max=\"10\" data-slider-step=\"1\" data-slider-value=\"5\" name=\"employerOnly.desiredJobs.values\"/>\
 					</div>\
 				</div>\
 			</div>");
@@ -91,12 +91,12 @@ $(document).ready(function() {
 		$('.companyRow').last().after("<div class=\"row companyRow\">\
 				<div class=\"col-md-6\">\
 					<div class=\"form-group\">\
-						<input type=\"text\" class=\"form-control companyInput\" placeholder=\"Company\" />\
+						<input type=\"text\" class=\"form-control companyInput\" placeholder=\"Company\" name=\"desiredCompaniesKeys\"/>\
 					</div>\
 				</div>\
 				<div class=\"col-md-6\">\
 					<div class=\"form-group\">\
-						<input type=\"text\" class=\"companySlider\" value=\"\" data-slider-min=\"0\" data-slider-max=\"10\" data-slider-step=\"1\" data-slider-value=\"5\" />\
+						<input type=\"text\" class=\"companySlider\" value=\"5\" data-slider-min=\"0\" data-slider-max=\"10\" data-slider-step=\"1\" data-slider-value=\"5\" name=\"desiredCompaniesValues\"/>\
 					</div>\
 				</div>\
 			</div>");
