@@ -4,7 +4,6 @@ var JobPosting = require('../models/jobPosting.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    
     JobPosting.find(function(err, jobs){ 
         if(err) res.send(err);
 
@@ -14,7 +13,6 @@ router.get('/', function(req, res, next) {
             data : jobs
         }); 
     });
-    
 });
 
 module.exports = router;

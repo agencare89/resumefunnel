@@ -3,7 +3,7 @@ var router = express.Router();
 var JobPosting = require('../models/jobPosting.js');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', loggedIn, function(req, res, next) {
 	// TODO: Replace hard-coded user with logged in user information from Passport.io (null if not logged in)
   	res.render('new', { 
   		user : req.user,
@@ -84,5 +84,13 @@ router.post('/', function(req, res, next) {
         res.send();
     });
 });
+
+function loggedIn(req, res, next) {
+    if (req.user) {
+        next();
+    } else {
+        res.redirect('/login');
+    }
+}
 
 module.exports = router;

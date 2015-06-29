@@ -11,4 +11,4 @@ var resumeSchema = mongoose.Schema({
 });
 
 // create the model for users and expose it to our app
-module.exports = mongoose.model('JobPosting', resumeSchema);
+module.exports = mongoose.model('Resume', resumeSchema);
