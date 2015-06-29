@@ -31,13 +31,19 @@ module.exports = function(passport) {
                     if (user) {
                         return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
                     } else {
-
+                        console.log(req);
                         // if there is no user with that email create the user
-                        var newUser            = new User();
-                        // set the user's local credentials
-                        newUser.email    = email;
-                        newUser.password = newUser.generateHash(password);
-
+                        var newUser             = new User();
+                        // set the user's credentials
+                        newUser.firstName       = req.body.firstName;
+                        newUser.lastName        = req.body.lastName;
+                        newUser.email           = email;
+                        newUser.password        = newUser.generateHash(password);
+                        newUser.phoneNumber     = req.body.phoneNumber;
+                        newUser.companyName     = req.body.companyName;
+                        newUser.companyLocation = req.body.companyLocation; 
+                        newUser.companyLogo     = req.body.companyLogo
+                
                         // save the user
                         newUser.save(function(err) {
                             if (err) throw err;
