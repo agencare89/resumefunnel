@@ -12,7 +12,7 @@ router.get('/', loggedIn, function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) { 
-    console.log(req);
+    console.log(req.body);
     var newJob = new JobPosting();
     newJob.jobTitle = req.body.jobTitle; 
     newJob.jobDescription = req.body.jobDescription;
@@ -148,6 +148,7 @@ router.post('/', function(req, res, next) {
     // save the job
     newJob.save(function(err) {
         if (err) throw err;
+        
         res.render('dashboard', { 
   		    user : req.user,
   		    newPost : 'active'

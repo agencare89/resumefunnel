@@ -2,13 +2,13 @@ $(document).ready(function() {
     $("#jobPostingsTable tr").css('cursor', 'pointer');
     
 	$.ajax({
-        url: "/postings",
+        url: "/postings/.json",
         type: "GET",
         dataType: "json",
         cache: true,
         success: function(data) {
         	$("#jobPostingsTable").dataTable({
-        		data: data,
+        		data: data.jobs,
                 columns: [
                     { data: "jobTitle", sTitle: "Job Title", sClass: "center" },
                     { data: "companyName", sTitle: "Company", sClass: "center" },
