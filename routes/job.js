@@ -13,7 +13,7 @@ var postingText = "";
 var skills = "";
 
 //Create the AlchemyAPI object
-var AlchemyAPI = require('./alchemyapi_node/alchemyapi');
+var AlchemyAPI = require('../alchemyapi_node/alchemyapi');
 var alchemyapi = new AlchemyAPI();
 
 function postProcess(output){

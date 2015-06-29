@@ -8,12 +8,12 @@ $(document).ready(function() {
         cache: true,
         success: function(data) {
         	$("#jobPostingsTable").dataTable({
-        		data: data.jobs,
+        		data: data,
                 columns: [
-                    { data: "jobTitle", sTitle: "Job Title", sClass: "center" },
-                    { data: "companyName", sTitle: "Company", sClass: "center" },
-                    { data: "joblocation", sTitle: "Location", sClass: "center" },
-                    { data: "dueDate", sTitle: "Deadline", sClass: "center" }
+                    { data: "jobs.jobTitle", sTitle: "Job Title", sClass: "center" },
+                    { data: "user.companyName", sTitle: "Company", sClass: "center" },
+                    { data: "jobs.jobLocation", sTitle: "Location", sClass: "center" },
+                    { data: "jobs.dueDate", sTitle: "Deadline", sClass: "center" }
                 ]
             });
 
@@ -22,13 +22,12 @@ $(document).ready(function() {
             });
 		},
         error: function (jqXHR, textStatus, errorThrown) {
-            // Probably a better way to do this but w/e
             $("#jobPostingsTable").dataTable({
                 columns: [
-                    { data: "jobTitle", sTitle: "Job Title", sClass: "center" },
-                    { data: "companyName", sTitle: "Company", sClass: "center" },
-                    { data: "jobLocation", sTitle: "Location", sClass: "center" },
-                    { data: "dueDate", sTitle: "Deadline", sClass: "center" }
+                    { data: "jobs.jobTitle", sTitle: "Job Title", sClass: "center" },
+                    { data: "user.companyName", sTitle: "Company", sClass: "center" },
+                    { data: "jobs.jobLocation", sTitle: "Location", sClass: "center" },
+                    { data: "jobs.dueDate", sTitle: "Deadline", sClass: "center" }
                 ]
             });
         }

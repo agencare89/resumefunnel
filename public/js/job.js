@@ -18,7 +18,6 @@ $(document).ready(function() {
             });
 		},
         error: function (jqXHR, textStatus, errorThrown) {
-            // Probably a better way to do this but w/e
             $("#resumesTable").dataTable({
                 columns: [
                     { data: "resume", sTitle: "Resume", sClass: "center" },
