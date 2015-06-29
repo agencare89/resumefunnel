@@ -12,11 +12,17 @@ var txtFile;
 var postingText = "";
 var skills = "";
 
+var jobObj;
+
 //Create the AlchemyAPI object
 var AlchemyAPI = require('../alchemyapi_node/alchemyapi');
 var alchemyapi = new AlchemyAPI();
 
 function postProcess(output){
+
+	console.log("----Job OBJ----");
+	console.log(jobObj);
+	console.log("---------------");
 
 	/* Confidence scores */
 	var skillScore = 0.0;
@@ -31,6 +37,15 @@ function postProcess(output){
 	var companyWeights = {'Microsoft':9, 'Google':8, 'Amazon':6};
 	var educationWeights = {'McMaster University':9, 'Western University':8, 'Seneca College':6};
 	var degreeWeights = {'Faculty of Engineering Science':9, 'B.Eng Software':8, 'Software Engineering':8};
+
+	JobPosting.findById(req.params.job_id).populate('employer').exec(function(err, jobs) {
+		console.log(job);
+		res.render('job', { 
+			user : req.user,
+			ownsPost : true,
+			job : job
+		});
+	});
 
 	// Compute the weight against the desired qualifications
 	skillScore = skillWeighting(skillWeights);
@@ -197,6 +212,8 @@ function degreeWeighting(degreeWeights, output){
 /* GET job posting. */
 router.get('/:job_id', function(req, res, next) {
 	JobPosting.findById(req.params.job_id).populate('employer').exec(function(err, job) {
+		console.log(job);
+		jobObj = job;
 		res.render('job', { 
 			user : req.user,
 			ownsPost : true,
@@ -228,7 +245,7 @@ router.post('/api/pdf', [multer({ dest: './uploads/',
     	txtFile = 'uploads/' + txtFile;
 
         // for testing on a Windows machine, replace with backward slashes
-    	exec('ext_libs/pdftotext_mac -eol unix ' + file.path, function (error, stdout, stderr) {
+    	exec('ext_libs/pdftotext_prod -eol unix ' + file.path, function (error, stdout, stderr) {
 
             var fs = require('fs');
 
