@@ -20,11 +20,37 @@ var alchemyapi = new AlchemyAPI();
 
 function postProcess(output){
 
-	console.log("----Job OBJ----");
-	console.log(jobObj);
-	console.log("---------------");
+	/* Extract the desired weights from the DB */
+	var skillWeights = new Array();
+	var jobTitleWeights = new Array();
+	var companyWeights = new Array();
+	var educationWeights = new Array();
+	var degreeWeights = new Array();
 
-	console.log(jobObj['employerOnly']['desiredSchools']);
+	for(var t = 0; t < jobObj['employerOnly']['desiredSchools'].length; t++) {
+		var obj = jobObj['employerOnly']['desiredSchools'][t];
+		educationWeights[obj.key] = obj.value;
+	}
+
+	for(var t = 0; t < jobObj['employerOnly']['desiredCompanies'].length; t++) {
+		var obj = jobObj['employerOnly']['desiredCompanies'][t];
+		companyWeights[obj.key] = obj.value;
+	}
+
+	for(var t = 0; t < jobObj['employerOnly']['desiredJobs'].length; t++) {
+		var obj = jobObj['employerOnly']['desiredJobs'][t];
+		jobTitleWeights[obj.key] = obj.value;
+	}
+
+	for(var t = 0; t < jobObj['employerOnly']['desiredDegrees'].length; t++) {
+		var obj = jobObj['employerOnly']['desiredDegrees'][t];
+		degreeWeights[obj.key] = obj.value;
+	}
+
+	for(var t = 0; t < jobObj['employerOnly']['desiredSkills'].length; t++) {
+		var obj = jobObj['employerOnly']['desiredSkills'][t];
+		skillWeights[obj.key] = obj.value;
+	}
 
 	/* Confidence scores */
 	var skillScore = 0.0;
@@ -32,13 +58,6 @@ function postProcess(output){
 	var companyScore = 0.0;
 	var educationScore = 0.0;
 	var degreeScore = 0.0;
-
-	/* Extract the desired weights from the DB */
-	var skillWeights = {'java':9, 'c#':7, 'db2':8, 'NodeJS':9};
-	var jobTitleWeights = {'Software Developer':9, 'Programmer':8, 'Software Analyst':6};
-	var companyWeights = {'Microsoft':9, 'Google':8, 'Amazon':6};
-	var educationWeights = {'McMaster University':9, 'Western University':8, 'Seneca College':6};
-	var degreeWeights = {'Faculty of Engineering Science':9, 'B.Eng Software':8, 'Software Engineering':8};
 
 	// Compute the weight against the desired qualifications
 	skillScore = skillWeighting(skillWeights);
@@ -50,7 +69,7 @@ function postProcess(output){
 	// Compute an overall rating based on the 5 categories above
 	var totalWeight = skillScore*0.4 + jobTitleScore*0.2 + companyScore*0.2
 		+ educationScore*0.1 + degreeScore*0.1;
-		
+	
 	console.log(totalWeight);
 }
 
