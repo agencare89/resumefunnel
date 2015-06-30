@@ -42,19 +42,10 @@ module.exports = function(passport) {
                         newUser.phoneNumber     = req.body.phoneNumber;
                         newUser.companyName     = req.body.companyName;
                         newUser.companyLogo     = req.body.companyLogo;
-                        
+                        newUser.companyWebsite  = req.body.companyWebsite;
                         // save the user
                         newUser.save(function(err) {
                             if (err) throw err;
-                            multer({ dest: './uploads/',
-                                rename: function (fieldname, filename) {
-                                    return filename+Date.now();
-                                },
-                                onFileUploadStart: function (file) {
-                                },
-                                onFileUploadComplete: function (file) {
-                                    console.log("uploaded");
-                            }});
                             return done(null, newUser);
                         });
                     }
