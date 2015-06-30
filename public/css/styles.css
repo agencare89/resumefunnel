@@ -90,3 +90,7 @@ code {
 textarea { 
    resize: vertical;
 }
+
+.title {
+  margin-top: 50px;
+}

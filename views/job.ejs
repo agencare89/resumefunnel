@@ -7,11 +7,12 @@
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<link rel="icon" href="images/favicon.ico">
+	<link rel="icon" href="../images/favicon.ico">
 
 	<title>Software Developer - User Interfaces</title>
 
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
+	<link href="../css/dataTables.bootstrap.css" rel="stylesheet">
 	<link href="../css/styles.css" rel="stylesheet">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -34,7 +35,7 @@
 				<hr />
 				<h2>Job Description</h2>
 				<p>
-					<%= job.jobDescription %>
+					<%- job.jobDescription.replace('\n', '<br>') %>
 				</p>
 
 				<h2>Desirable Qualifications</h2>
@@ -53,7 +54,7 @@
 
 				<h2>Other Notes</h2>
 				<p>
-					<%= job.notes %>
+					<%- job.notes.replace('\n', '<br>') %>
 				</p>
 			</div>
 			<div class="col-md-4">
@@ -99,7 +100,7 @@
 
 		<hr />
 
-		<form id =  "uploadForm" enctype = "multipart/form-data" action = "/api/pdf" method = "post">
+		<form id="uploadForm" enctype="multipart/form-data" action="/job/api/pdf" method="post">
 	        <h3>Upload Your Resume!</h3>
 			<div class="form-group">
 				<input class="btn btn-default" type="file" id="resumeUploadFile" name="userPDF">
@@ -110,8 +111,9 @@
 		</form>
 
 		<% if (ownsPost) { %>
-		<h1>Submitted Resumes</h1>
+		<h1 class="title">Submitted Resumes</h1>
 		<hr />
+
 		<table id="resumesTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>

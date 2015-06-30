@@ -4,25 +4,39 @@ var JobPosting = require('../models/jobPosting');
 
 /* GET dashboard page. */
 router.get('/', loggedIn, function(req, res, next) {
-    res.render('dashboard', { 
-        user : req.user, 
-        dashboard : 'active', 
-        data : usersJobs
+    JobPosting.find({}).populate('employer').exec(function(err, jobs) {
+        if (err) res.send(err); 
+        else {
+            var filteredJobs = [];
+
+            for (var i = 0; i < jobs.length; i++) {
+                if (jobs[i].employer.id == req.user._id) {
+                    filteredJobs.push(jobs[i]);
+                }
+            }
+
+            res.render('dashboard', { 
+                user : req.user, 
+                dashboard : 'active', 
+                jobs : filteredJobs
+            });
+        }
     });
 });
 
 router.get('/.json', loggedIn, function(req, res, next) {
-    JobPosting.find(function(err, jobs) { 
+    JobPosting.find({}).populate('employer').exec(function(err, jobs) {
         if (err) res.send(err); 
         else { 
-            var usersJobs = []; 
-            for (var i = 0; i < jobs.length; i++) { 
-                if (jobs[i].employerId === req.user.email) { 
-                    usersJobs.push(jobs[i]);
+            var filteredJobs = [];
+
+            for (var i = 0; i < jobs.length; i++) {
+                if (jobs[i].employer.id == req.user._id) {
+                    filteredJobs.push(jobs[i]);
                 }
             }
             
-            res.send({ data : usersJobs });
+            res.send(filteredJobs);
         }
     }); 
 });

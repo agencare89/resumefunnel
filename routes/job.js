@@ -38,15 +38,6 @@ function postProcess(output){
 	var educationWeights = {'McMaster University':9, 'Western University':8, 'Seneca College':6};
 	var degreeWeights = {'Faculty of Engineering Science':9, 'B.Eng Software':8, 'Software Engineering':8};
 
-	JobPosting.findById(req.params.job_id).populate('employer').exec(function(err, jobs) {
-		console.log(job);
-		res.render('job', { 
-			user : req.user,
-			ownsPost : true,
-			job : job
-		});
-	});
-
 	// Compute the weight against the desired qualifications
 	skillScore = skillWeighting(skillWeights);
 	jobTitleScore = jobTitleWeighting(jobTitleWeights, output);
@@ -212,11 +203,11 @@ function degreeWeighting(degreeWeights, output){
 /* GET job posting. */
 router.get('/:job_id', function(req, res, next) {
 	JobPosting.findById(req.params.job_id).populate('employer').exec(function(err, job) {
-		console.log(job);
 		jobObj = job;
+		
 		res.render('job', { 
 			user : req.user,
-			ownsPost : true,
+			ownsPost : job.employer.id && req.user && job.employer.id == req.user._id,
 			job : job
 		});
 	});
@@ -230,37 +221,41 @@ router.get('/:job_id/.json', function(req, res, next) {
 	});
 });
 
-router.post('/api/pdf', [multer({ dest: './uploads/',
-    rename: function (fieldname, filename) {
-        return filename+Date.now();
-    },
-    onFileUploadStart: function (file) {
-    },
-    onFileUploadComplete: function (file) {
-    	var exec = require('child_process').exec;
+router.post('/api/pdf',
+		[multer({ dest: './uploads/',
+	    rename: function (fieldname, filename) {
+	        return filename+Date.now();
+	    },
+	    onFileUploadStart: function (file) {
+	    },
+	    onFileUploadComplete: function (file) {
+	    	var exec = require('child_process').exec;
 
-    	var fileName = file.name;
-    	txtFile = fileName.substring(0, fileName.length - 4);
-    	txtFile = txtFile + '.txt';
-    	txtFile = 'uploads/' + txtFile;
+	    	var fileName = file.name;
+	    	txtFile = fileName.substring(0, fileName.length - 4);
+	    	txtFile = txtFile + '.txt';
+	    	txtFile = 'uploads/' + txtFile;
 
-        // for testing on a Windows machine, replace with backward slashes
-    	exec('ext_libs/pdftotext_prod -eol unix ' + file.path, function (error, stdout, stderr) {
+	        // for testing on a Windows machine, replace with backward slashes
+	    	exec('ext_libs/pdftotext_mac -eol unix ' + file.path, function (error, stdout, stderr) {
 
-            var fs = require('fs');
+	            var fs = require('fs');
 
-            fs.readFile(txtFile, {encoding: 'utf-8'}, function(err,data){
-                if (!err){
-                    pdfText = data;
-                    alchemyChain();
-                }else{
-                    console.log(err);
-                }
+	            fs.readFile(txtFile, {encoding: 'utf-8'}, function(err,data){
+	                if (!err){
+	                    pdfText = data;
+	                    alchemyChain();
+	                }else{
+	                    console.log(err);
+	                }
 
-            });
+	            });
 
-    	});
-    }
-})]);
+	    	});
+	    }
+	}),
+	function(req, res){
+		res.end("Uploaded");
+	}]);
 
 module.exports = router;
