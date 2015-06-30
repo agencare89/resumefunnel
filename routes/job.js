@@ -11,7 +11,7 @@ var txtFile;
 
 var postingText = "";
 var skills = "";
-
+var totalWeight; 
 var jobObj;
 
 //Create the AlchemyAPI object
@@ -67,7 +67,7 @@ function postProcess(output){
 	degreeScore = degreeWeighting(degreeWeights, output);
 
 	// Compute an overall rating based on the 5 categories above
-	var totalWeight = skillScore*0.4 + jobTitleScore*0.2 + companyScore*0.2
+	totalWeight = skillScore*0.4 + jobTitleScore*0.2 + companyScore*0.2
 		+ educationScore*0.1 + degreeScore*0.1;
 	
 	console.log(totalWeight);
@@ -244,7 +244,7 @@ router.get('/:job_id/.json', function(req, res, next) {
 	});
 });
 
-router.post('/api/pdf',
+router.post('/api/pdf/:job_id',
 		[multer({ dest: './uploads/',
 	    rename: function (fieldname, filename) {
 	        return filename+Date.now();
@@ -278,7 +278,23 @@ router.post('/api/pdf',
 	    }
 	}),
 	function(req, res){
-		res.redirect(req.get('referer'));
+        var newResume = new Resume();
+        newResume.path = req.files.userPDF.originalname;
+        newResume.matchPercent = totalWeight;
+        newResume.save(function(err) { 
+            if(err) throw err; 
+            JobPosting.findById( req.params.job_id, function(err, data) { 
+                data.resumes.push(newResume);
+                
+                var upsertData = data.toObject();
+                delete upsertData._id;
+                
+                JobPosting.update({ jobTitle: jobTitle},  upsertData, {upsert:true}, function(err) { 
+                    if(err) console.log(err); 
+                });
+            });
+            res.redirect(req.get('referer'));
+        });      
 	}]);
 
 module.exports = router;
