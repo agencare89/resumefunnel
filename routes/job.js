@@ -205,21 +205,23 @@ function degreeWeighting(degreeWeights, output){
 /* GET job posting. */
 router.get('/:job_id', function(req, res, next) {
 	JobPosting.findById(req.params.job_id).populate('employer').exec(function(err, job) {
-		jobObj = job;
-		
-		res.render('job', { 
-			user : req.user,
-			ownsPost : job.employer.id && req.user && job.employer.id == req.user._id,
-			job : job
-		});
+		if (err) res.send(err);
+		else {
+			jobObj = job;
+			
+			res.render('job', { 
+				user : req.user,
+				ownsPost : job.employer && req.user && job.employer.id == req.user._id,
+				job : job
+			});
+		}
 	});
 });
 
 router.get('/:job_id/.json', function(req, res, next) {
 	JobPosting.findById(req.params.job_id).populate('employer').exec(function(err, job) {
 		if (err) res.send(err);
-		
-		res.json({ job : job });
+		else res.json(job);
 	});
 });
 
