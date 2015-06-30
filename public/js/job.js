@@ -6,23 +6,29 @@ $(document).ready(function() {
         cache: true,
         success: function(data) {
             console.log(data);
-        	$("#resumesTable").dataTable({
+        	var table = $("#resumesTable").dataTable({
         		data: data,
+                order: [[ 2, "asc" ], [ 1, "asc" ]],
                 columns: [
-                    { data: "resume", sTitle: "Resume", sClass: "center" },
-                    { data: "confidence", sTitle: "Confidence", sClass: "center" }
+                    { data: "_id", visible: false },
+                    { data: "path", sTitle: "Resume" },
+                    { data: "confidence", sTitle: "Confidence" }
                 ]
             });
 
-            $('#resumesTable tbody').on('click', 'tr', function() {
-                window.location.href = "/resume/" + $('td', this).eq(0).text();
+            table.$("tr").css('cursor', 'pointer');
+
+            table.$('tr').click(function () {
+                var data = table.fnGetData(this);
+                window.location.href = data.path;
             });
 		},
         error: function (jqXHR, textStatus, errorThrown) {
             $("#resumesTable").dataTable({
                 columns: [
-                    { data: "resume", sTitle: "Resume", sClass: "center" },
-                    { data: "confidence", sTitle: "Confidence", sClass: "center" }
+                    { data: "_id", visible: false },
+                    { data: "path", sTitle: "Resume" },
+                    { data: "confidence", sTitle: "Confidence" }
                 ]
             });
         }
