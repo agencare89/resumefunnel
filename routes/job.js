@@ -24,6 +24,8 @@ function postProcess(output){
 	console.log(jobObj);
 	console.log("---------------");
 
+	console.log(jobObj['employerOnly']['desiredSchools']);
+
 	/* Confidence scores */
 	var skillScore = 0.0;
 	var jobTitleScore = 0.0;
