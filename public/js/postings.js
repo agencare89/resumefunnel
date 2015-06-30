@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    $("#jobPostingsTable tr").css('cursor', 'pointer');
     $.fn.dataTable.moment( 'DD/MM/YYYY' );
     
 	$.ajax({
@@ -20,12 +19,16 @@ $(document).ready(function() {
                 ]
             });
 
+            table.("tr").css('cursor', 'pointer');
+
             table.$('tr').click(function () {
                 var data = table.fnGetData(this);
                 window.location.href = "/job/" + data._id;
             });
 		},
         error: function (jqXHR, textStatus, errorThrown) {
+            table.("tr").css('cursor', 'pointer');
+            
             $("#jobPostingsTable").dataTable({
                 columns: [
                     { data: "_id", visible: false },
