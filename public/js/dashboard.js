@@ -2,31 +2,35 @@ $(document).ready(function() {
     $("#jobPostingsTable tr").css('cursor', 'pointer');
     
     $.ajax({
-        url: "/dashboard",
+        url: "/dashboard/.json",
         type: "GET",
         dataType: "json",
         cache: true,
         success: function(data) {
-            $("#jobPostingsTable").dataTable({
+            console.log(data);
+            var table = $("#jobPostingsTable").dataTable({
                 data: data,
+                order: [[ 4, "asc" ], [ 1, "asc" ]],
                 columns: [
+                    { data: "_id", visible: false },
                     { data: "jobTitle", sTitle: "Job Title", sClass: "center" },
-                    { data: "companyName", sTitle: "Company", sClass: "center" },
+                    { data: "employer.companyName", sTitle: "Company", sClass: "center" },
                     { data: "jobLocation", sTitle: "Location", sClass: "center" },
                     { data: "dueDate", sTitle: "Deadline", sClass: "center" }
                 ]
             });
 
-            $('#jobPostingsTable tbody').on('click', 'tr', function() {
-                window.location.href = "/job/" + $('td', this).eq(0).text();
+            table.$('tr').click(function () {
+                var data = table.fnGetData(this);
+                window.location.href = "/job/" + data._id;
             });
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            // Probably a better way to do this but w/e
             $("#jobPostingsTable").dataTable({
                 columns: [
+                    { data: "_id", visible: false },
                     { data: "jobTitle", sTitle: "Job Title", sClass: "center" },
-                    { data: "companyName", sTitle: "Company", sClass: "center" },
+                    { data: "employer.companyName", sTitle: "Company", sClass: "center" },
                     { data: "jobLocation", sTitle: "Location", sClass: "center" },
                     { data: "dueDate", sTitle: "Deadline", sClass: "center" }
                 ]

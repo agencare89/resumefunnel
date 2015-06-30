@@ -149,10 +149,10 @@ router.post('/', loggedIn, function(req, res, next) {
     newJob.save(function(err) {
         if (err) throw err;
         
-        res.redirect('dashboard', { 
+        res.redirect({ 
   		    user : req.user,
   		    newPost : 'active'
-  	    });
+  	    }, 'dashboard');
     });
 });
 
