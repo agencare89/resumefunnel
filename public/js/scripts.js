@@ -7,7 +7,6 @@ $(document).ready(function() {
 (function ($) {
 	$.fn.validate = function(rules) {
 		$.each(rules, function(i, value) {
-			debugger;
 			var group = $(value.group);
 			var input = $(value.group + " input");
 			var inputGroup = $(value.group + " .input-group");
