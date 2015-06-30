@@ -1,5 +1,6 @@
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/user.js');
+var multer  = require('multer');
 
 module.exports = function(passport) {
     passport.serializeUser(function(user, done) {
@@ -31,7 +32,6 @@ module.exports = function(passport) {
                     if (user) {
                         return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
                     } else {
-                        console.log(req);
                         // if there is no user with that email create the user
                         var newUser             = new User();
                         // set the user's credentials
@@ -41,12 +41,20 @@ module.exports = function(passport) {
                         newUser.password        = newUser.generateHash(password);
                         newUser.phoneNumber     = req.body.phoneNumber;
                         newUser.companyName     = req.body.companyName;
-                        newUser.companyLocation = req.body.companyLocation; 
-                        newUser.companyLogo     = req.body.companyLogo
-                
+                        newUser.companyLogo     = req.body.companyLogo;
+                        
                         // save the user
                         newUser.save(function(err) {
                             if (err) throw err;
+                            multer({ dest: './uploads/',
+                                rename: function (fieldname, filename) {
+                                    return filename+Date.now();
+                                },
+                                onFileUploadStart: function (file) {
+                                },
+                                onFileUploadComplete: function (file) {
+                                    console.log("uploaded");
+                            }});
                             return done(null, newUser);
                         });
                     }
