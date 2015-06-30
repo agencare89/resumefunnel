@@ -22,63 +22,13 @@ var alchemyapi = new AlchemyAPI();
 
 function postProcess(output){
 
-	/* Extract the desired weights from the DB */
-	var skillWeights = new Array();
-	var jobTitleWeights = new Array();
-	var companyWeights = new Array();
-	var educationWeights = new Array();
-	var degreeWeights = new Array();
-
-	for(var t = 0; t < jobObj['employerOnly']['desiredSchools'].length; t++) {
-		var obj = jobObj['employerOnly']['desiredSchools'][t];
-		educationWeights[obj.key] = obj.value;
-	}
-
-	for(var t = 0; t < jobObj['employerOnly']['desiredCompanies'].length; t++) {
-		var obj = jobObj['employerOnly']['desiredCompanies'][t];
-		companyWeights[obj.key] = obj.value;
-	}
-
-	for(var t = 0; t < jobObj['employerOnly']['desiredJobs'].length; t++) {
-		var obj = jobObj['employerOnly']['desiredJobs'][t];
-		jobTitleWeights[obj.key] = obj.value;
-	}
-
-	for(var t = 0; t < jobObj['employerOnly']['desiredDegrees'].length; t++) {
-		var obj = jobObj['employerOnly']['desiredDegrees'][t];
-		degreeWeights[obj.key] = obj.value;
-	}
-
-	for(var t = 0; t < jobObj['employerOnly']['desiredSkills'].length; t++) {
-		var obj = jobObj['employerOnly']['desiredSkills'][t];
-		skillWeights[obj.key] = obj.value;
-	}
-
-	/* Confidence scores */
-	var skillScore = 0.0;
-	var jobTitleScore = 0.0;
-	var companyScore = 0.0;
-	var educationScore = 0.0;
-	var degreeScore = 0.0;
-
-	// Compute the weight against the desired qualifications
-	skillScore = skillWeighting(skillWeights);
-	jobTitleScore = jobTitleWeighting(jobTitleWeights, output);
-	companyScore = companyWeighting(companyWeights, output);
-	educationScore = educationWeighting(educationWeights, output);
-	degreeScore = degreeWeighting(degreeWeights, output);
-
-	// Compute an overall rating based on the 5 categories above
-	totalWeight = skillScore*0.4 + jobTitleScore*0.2 + companyScore*0.2
-		+ educationScore*0.1 + degreeScore*0.1;
 	
-	console.log(totalWeight);
+
+
 }
 
 function alchemyChain(){
-	var output = {};
-	//Start the analysis chain
-	entities(output);
+	
 }
 
 function entities(output) {
@@ -240,9 +190,9 @@ router.get('/:job_id', function(req, res, next) {
 });
 
 router.get('/:job_id/.json', function(req, res, next) {
-	JobPosting.findById(req.params.job_id).populate('employer').exec(function(err, job) {
+	JobPosting.findById(req.params.job_id).populate('resumes').exec(function(err, job) {
 		if (err) res.send(err);
-		else res.json(job);
+		else res.json(job.resumes);
 	});
 });
 
@@ -280,23 +230,85 @@ router.post('/api/pdf/:job_id',
 	    }
 	}),
 	function(req, res){
-        var newResume = new Resume();
-        newResume.path = req.files.userPDF.originalname;
-        newResume.matchPercent = totalWeight;
-        newResume.save(function(err, resume) { 
-            if(err) throw err;
+		var output = {};
+		alchemyapi.entities('text', pdfText,{ 'sentiment':1 }, function(response) {
+			output['entities'] = { text:pdfText, response:JSON.stringify(response,null,4), results:response['entities'] };
 
-            JobPosting.findById( req.params.job_id, function(err, job) { 
-                job.resumes.push(resume._id);
+			alchemyapi.keywords('text', pdfText, { 'sentiment':1 }, function(response) {
+				output['keywords'] = { text:pdfText, response:JSON.stringify(response,null,4), results:response['keywords'] };
+				
+				/* Extract the desired weights from the DB */
+				var skillWeights = new Array();
+				var jobTitleWeights = new Array();
+				var companyWeights = new Array();
+				var educationWeights = new Array();
+				var degreeWeights = new Array();
 
-                job.save(function(err) {
-	                if (err)
-	                    res.send(err);
+				for(var t = 0; t < jobObj['employerOnly']['desiredSchools'].length; t++) {
+					var obj = jobObj['employerOnly']['desiredSchools'][t];
+					educationWeights[obj.key] = obj.value;
+				}
 
-	                res.redirect(req.get('referer'));
-	            });
-            });
-        });      
+				for(var t = 0; t < jobObj['employerOnly']['desiredCompanies'].length; t++) {
+					var obj = jobObj['employerOnly']['desiredCompanies'][t];
+					companyWeights[obj.key] = obj.value;
+				}
+
+				for(var t = 0; t < jobObj['employerOnly']['desiredJobs'].length; t++) {
+					var obj = jobObj['employerOnly']['desiredJobs'][t];
+					jobTitleWeights[obj.key] = obj.value;
+				}
+
+				for(var t = 0; t < jobObj['employerOnly']['desiredDegrees'].length; t++) {
+					var obj = jobObj['employerOnly']['desiredDegrees'][t];
+					degreeWeights[obj.key] = obj.value;
+				}
+
+				for(var t = 0; t < jobObj['employerOnly']['desiredSkills'].length; t++) {
+					var obj = jobObj['employerOnly']['desiredSkills'][t];
+					skillWeights[obj.key] = obj.value;
+				}
+
+				/* Confidence scores */
+				var skillScore = 0.0;
+				var jobTitleScore = 0.0;
+				var companyScore = 0.0;
+				var educationScore = 0.0;
+				var degreeScore = 0.0;
+
+				// Compute the weight against the desired qualifications
+				skillScore = skillWeighting(skillWeights);
+				jobTitleScore = jobTitleWeighting(jobTitleWeights, output);
+				companyScore = companyWeighting(companyWeights, output);
+				educationScore = educationWeighting(educationWeights, output);
+				degreeScore = degreeWeighting(degreeWeights, output);
+
+				// Compute an overall rating based on the 5 categories above
+				totalWeight = skillScore*0.4 + jobTitleScore*0.2 + companyScore*0.2
+					+ educationScore*0.1 + degreeScore*0.1;
+
+				var newResume = new Resume();
+		        newResume.path = req.files.userPDF.originalname;
+
+		        console.log(totalWeight);
+
+		        newResume.matchPercent = totalWeight;
+		        newResume.save(function(err, resume) { 
+		            if(err) throw err;
+
+		            JobPosting.findById(req.params.job_id, function(err, job) { 
+		                job.resumes.push(resume._id);
+
+		                job.save(function(err) {
+			                if (err)
+			                    res.send(err);
+
+			                res.redirect(req.get('referer'));
+			            });
+		            });
+		        });      
+			});
+		});
 	}]);
 
 module.exports = router;
