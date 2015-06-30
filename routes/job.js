@@ -260,7 +260,7 @@ router.post('/api/pdf',
 	    	txtFile = 'uploads/' + txtFile;
 
 	        // for testing on a Windows machine, replace with backward slashes
-	    	exec('ext_libs/pdftotext_mac -eol unix ' + file.path, function (error, stdout, stderr) {
+	    	exec('ext_libs/pdftotext_prod -eol unix ' + file.path, function (error, stdout, stderr) {
 
 	            var fs = require('fs');
 
