@@ -1,10 +1,11 @@
 $(document).ready(function() {
 	$.ajax({
-        url: "/job",
+        url: "/job/" + window.location.href.substring(window.location.href.lastIndexOf("/")),
         type: "GET",
         dataType: "json",
         cache: true,
         success: function(data) {
+            console.log(data);
         	$("#resumesTable").dataTable({
         		data: data,
                 columns: [

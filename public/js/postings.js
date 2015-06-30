@@ -11,6 +11,7 @@ $(document).ready(function() {
 
         	var table = $("#jobPostingsTable").dataTable({
         		data: data,
+                order: [[ 4, "asc" ], [ 1, "asc" ]],
                 columns: [
                     { data: "_id", visible: false },
                     { data: "jobTitle", sTitle: "Job Title", sClass: "center" },
