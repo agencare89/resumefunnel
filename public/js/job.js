@@ -1,18 +1,19 @@
 $(document).ready(function() {
 	$.ajax({
-        url: "/job/" + window.location.href.substring(window.location.href.lastIndexOf("/")),
+        url: "/job/" + window.location.href.substring(window.location.href.lastIndexOf("/")) + "/.json",
         type: "GET",
         dataType: "json",
         cache: true,
         success: function(data) {
             console.log(data);
+
         	var table = $("#resumesTable").dataTable({
         		data: data,
                 order: [[ 2, "asc" ], [ 1, "asc" ]],
                 columns: [
                     { data: "_id", visible: false },
                     { data: "path", sTitle: "Resume" },
-                    { data: "confidence", sTitle: "Confidence" }
+                    { data: "matchPercentage", sTitle: "Confidence" }
                 ]
             });
 
@@ -28,7 +29,7 @@ $(document).ready(function() {
                 columns: [
                     { data: "_id", visible: false },
                     { data: "path", sTitle: "Resume" },
-                    { data: "confidence", sTitle: "Confidence" }
+                    { data: "matchPercentage", sTitle: "Confidence" }
                 ]
             });
         }
