@@ -36,11 +36,11 @@ app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secre
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
-app.use(multer({ dest: './uploads/', 
-    rename: function (fieldname, filename, req, res) {
-        return filename;
-	}
-}));
+// app.use(multer({ dest: './uploads/', 
+//     rename: function (fieldname, filename, req, res) {
+//         return filename;
+// 	}
+// }));
 
 // Routes
 var index = require('./routes/index');
