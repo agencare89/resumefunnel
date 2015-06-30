@@ -12,10 +12,10 @@ $(document).ready(function() {
                 order: [[ 4, "asc" ], [ 1, "asc" ]],
                 columns: [
                     { data: "_id", visible: false },
-                    { data: "jobTitle", sTitle: "Job Title", sClass: "center" },
-                    { data: "employer.companyName", sTitle: "Company", sClass: "center" },
-                    { data: "jobLocation", sTitle: "Location", sClass: "center" },
-                    { data: "dueDate", sTitle: "Deadline", sClass: "center" }
+                    { data: "jobTitle", sTitle: "Job Title" },
+                    { data: "employer.companyName", sTitle: "Company" },
+                    { data: "jobLocation", sTitle: "Location" },
+                    { data: "dueDate", sTitle: "Deadline" }
                 ]
             });
 
@@ -30,10 +30,10 @@ $(document).ready(function() {
             $("#jobPostingsTable").dataTable({
                 columns: [
                     { data: "_id", visible: false },
-                    { data: "jobTitle", sTitle: "Job Title", sClass: "center" },
-                    { data: "employer.companyName", sTitle: "Company", sClass: "center" },
-                    { data: "jobLocation", sTitle: "Location", sClass: "center" },
-                    { data: "dueDate", sTitle: "Deadline", sClass: "center" }
+                    { data: "jobTitle", sTitle: "Job Title" },
+                    { data: "employer.companyName", sTitle: "Company" },
+                    { data: "jobLocation", sTitle: "Location" },
+                    { data: "dueDate", sTitle: "Deadline" }
                 ]
             });
         }
