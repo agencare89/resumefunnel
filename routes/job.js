@@ -11,7 +11,7 @@ var txtFile;
 
 var postingText = "";
 var skills = "";
-var totalWeight; 
+var totalWeight = 0.0; 
 var jobObj;
 
 var totalWeight;
