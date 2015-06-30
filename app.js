@@ -30,15 +30,15 @@ app.use(bodyParser());
 
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
-
+app.use(express.static(__dirname + '/uploads'));
 // required for passport
 app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
-app.use(multer({ dest: './public/uploads/img/', 
+app.use(multer({ dest: './uploads/img/', 
     rename: function (fieldname, filename, req, res) {
-    	return filename;
+        return filename;
 	}
 }));
 
