@@ -32,6 +32,9 @@ module.exports = function(passport) {
                     if (user) {
                         return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
                     } else {
+                        console.log(req.body);
+                        console.log(req.files); 
+                        
                         // if there is no user with that email create the user
                         var newUser             = new User();
                         // set the user's credentials
@@ -41,7 +44,7 @@ module.exports = function(passport) {
                         newUser.password        = newUser.generateHash(password);
                         newUser.phoneNumber     = req.body.phoneNumber;
                         newUser.companyName     = req.body.companyName;
-                        newUser.companyLogo     = req.body.companyLogo;
+                        newUser.companyLogo     = req.files.companyLogo.originalname;
                         newUser.companyWebsite  = req.body.companyWebsite;
                         // save the user
                         newUser.save(function(err) {

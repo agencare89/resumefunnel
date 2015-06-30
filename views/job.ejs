@@ -35,7 +35,7 @@
 				<hr />
 				<h2>Job Description</h2>
 				<p>
-					<%- job.jobDescription.replace('\n', '<br>') %>
+					<%- job.jobDescription.replace(/(?:\r\n|\r|\n)/g, '<br>') %>
 				</p>
 
 				<h2>Desirable Qualifications</h2>
@@ -54,7 +54,7 @@
 
 				<h2>Other Notes</h2>
 				<p>
-					<%- job.notes.replace('\n', '<br>') %>
+					<%- job.notes.replace(/(?:\r\n|\r|\n)/g, '<br>') %>
 				</p>
 			</div>
 			<div class="col-md-4">
@@ -72,7 +72,7 @@
 								<td>Job Location</td>
 								<td>
 									<address class="remove-margin">
-										<%= job.companyLocation %>
+										<%= job.jobLocation %>
 									</address>
 								</td>
 							</tr>
