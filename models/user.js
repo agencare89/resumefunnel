@@ -10,10 +10,9 @@ var userSchema = mongoose.Schema({
     email           : String,
     password        : String, 
     companyName     : String,
-    companyLocation : String,
     companyWebsite  : String,
-    companyLogo     : String
-    //jobPostings   : String
+    companyLogo     : String,
+    jobPostings     : { type : mongoose.Schema.Types.ObjectId, ref : 'JobPosting' }
 });
 
 // methods ======================

@@ -15,30 +15,29 @@ var jobPostingSchema = mongoose.Schema({
     employer            : { type : mongoose.Schema.Types.ObjectId, ref : 'User' },
     resumes             : [{ type : mongoose.Schema.Types.ObjectId, ref : 'Resume' }],
     employerOnly        : { 
-            desiredSkills   : { 
-                key     : [],
-                value   : []
-            },
-            desiredDegrees  : { 
-                key     : [],
-                value   : [] 
-            },
-            desiredSchools  : { 
-                key     : [],
-                value   : [] 
-            }, 
-            desiredJobs     : { 
-                key     : [],
-                value   : [] 
-            },
-            desiredCompanies: { 
-                key     : [],
-                value   : [] 
-            },
+            desiredSkills   : [{ 
+                key     : String,
+                value   : Number
+            }],
+            desiredDegrees  : [{ 
+                key     : String,
+                value   : Number 
+            }],
+            desiredSchools  : [{ 
+                key     : String,
+                value   : Number 
+            }], 
+            desiredJobs     : [{ 
+                key     : String,
+                value   : Number 
+            }],
+            desiredCompanies: [{ 
+                key     : String,
+                value   : Number 
+            }],
             matches         : [],
             applications    : []
     }
-    // still need matches and list of resumes 
 });
 
 // create the model for users and expose it to our app

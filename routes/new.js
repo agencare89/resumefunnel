@@ -56,90 +56,75 @@ router.post('/', loggedIn, function(req, res, next) {
         so that Watson will be able to use it and score resumes accordingly   */ 
 
     if(req.body.desiredSkillsKeys) { 
+        newJob.employerOnly.desiredSkills = [];
         if (!Array.isArray(req.body.desiredSkillsKeys)) { 
-            newJob.employerOnly.desiredSkills.key = req.body.desiredSkillsKeys; 
-            newJob.employerOnly.desiredSkills.value = req.body.desiredSkillsValues;
+            newJob.employerOnly.desiredSkills.push({key: req.body.desiredSkillsKeys, value: req.body.desiredSkillsValues}); 
         }
         else {  
             var length = req.body.desiredSkillsKeys.length; 
-            newJob.employerOnly.desiredSkills.key = [];
-            newJob.employerOnly.desiredSkills.value = [];
             for(var a = 0; a < length; a++) { 
                 if(req.body.desiredSkillsKeys[a] !== "") { 
-                    newJob.employerOnly.desiredSkills.key.push(req.body.desiredSkillsKeys[a]); 
-                    newJob.employerOnly.desiredSkills.value.push(req.body.desiredSkillsValues[a]);
+                    newJob.employerOnly.desiredSkills.push({ key: req.body.desiredSkillsKeys[a], value: req.body.desiredSkillsValues[a]}); 
                 }
             }
         }
     } 
     
     if(req.body.desiredJobsKeys) { 
+        newJob.employerOnly.desiredJobs = []; 
         if (!Array.isArray(req.body.desiredJobsKeys)) { 
-            newJob.employerOnly.desiredJobs.key = req.body.desiredJobsKeys; 
-            newJob.employerOnly.desiredJobs.value = req.body.desiredJobsValues;
+            newJob.employerOnly.desiredJobs.push({key: req.body.desiredJobsKeys, value: req.body.desiredJobsValues}); 
         }
         else { 
             var length = req.body.desiredJobsKeys.length;
-            newJob.employerOnly.desiredJobs.key = []; 
-            newJob.employerOnly.desiredJobs.value = []; 
             for (var b = 0; b < length; b++) { 
                 if (req.body.desiredJobsKeys[b] !== "") { 
-                    newJob.employerOnly.desiredJobs.key.push(req.body.desiredJobsKeys[b]);
-                    newJob.employerOnly.desiredJobs.value.push(req.body.desiredJobsValues[b]);
+                    newJob.employerOnly.desiredJobs.push({ key: req.body.desiredJobsKeys[b], value: req.body.desiredJobsValues[b]});
                 }
             }
         }
     }
  
     if(req.body.desiredCompaniesKeys) { 
+        newJob.employerOnly.desiredCompanies = []; 
         if (!Array.isArray(req.body.desiredCompaniesKeys)) { 
-            newJob.employerOnly.desiredCompanies.key = req.body.desiredCompaniesKeys; 
-            newJob.employerOnly.desiredCompanies.value = req.body.desiredCompaniesValues;
+            newJob.employerOnly.desiredCompanies.push({key: req.body.desiredCompaniesKeys, value: req.body.desiredCompaniesValues}); 
         }
         else {          
             var length = req.body.desiredCompaniesKeys.length; 
-            newJob.employerOnly.desiredCompanies.key = []; 
-            newJob.employerOnly.desiredCompanies.value = [];
             for (var c = 0; c < length; c++) { 
                 if (req.body.desiredCompaniesKeys[c] !== "") { 
-                    newJob.employerOnly.desiredCompanies.key.push(req.body.desiredCompaniesKeys[c]);
-                    newJob.employerOnly.desiredCompanies.value.push(req.body.desiredCompaniesValues[c]);
+                    newJob.employerOnly.desiredCompanies.push({key: req.body.desiredCompaniesKeys[c], value: req.body.desiredCompaniesValues[c]});
                 }
             }
         }
     }
     
     if(req.body.desiredSchoolsKeys) { 
+        newJob.employerOnly.desiredSchools = []; 
         if (!Array.isArray(req.body.desiredSchoolsKeys)) { 
-            newJob.employerOnly.desiredSchools.key = req.body.desiredSchoolsKeys;
-            newJob.employerOnly.desiredSchools.value = req.body.desiredSchoolsValues;
+            newJob.employerOnly.desiredSchools.push({key: req.body.desiredSchoolsKeys, value: req.body.desiredSchoolsValues});
         }
         else { 
             var desiredSchools = req.body.desiredSchoolsKeys.length; 
-            newJob.employerOnly.desiredSchools.key = []; 
-            newJob.employerOnly.desiredSchools.value = [];
             for (var d = 0; d < length; d++) { 
                 if (req.body.desiredSchoolsKeys[d] !== "") { 
-                    newJob.employerOnly.desiredSchools.key.push(req.body.desiredSchoolsKeys[d]);
-                    newJob.employerOnly.desiredSchools.value.push(req.body.desiredSchoolsValues[d]);
+                    newJob.employerOnly.desiredSchools.push({key: req.body.desiredSchoolsKeys[d], value: req.body.desiredSchoolsValues[d]});
                 }
             }
         }
     }
 
     if(req.body.desiredDegreesKeys) { 
+        newJob.employerOnly.desiredDegrees.key = [];
         if (!Array.isArray(req.body.desiredDegreesKeys)) { 
-            newJob.employerOnly.desiredDegrees.key = req.body.desiredDegreesKeys;
-            newJob.employerOnly.desiredDegrees.value = req.body.desiredDegreesValues;
+            newJob.employerOnly.desiredDegrees.push({key: req.body.desiredDegreesKeys, value: req.body.desiredDegreesValues});
         }
         else { 
             var length = req.body.desiredDegreesKeys.length;
-            newJob.employerOnly.desiredDegrees.key = [];
-            newJob.employerOnly.desiredDegrees.value = []; 
             for (var e = 0; e < length; e++) { 
                 if (req.body.desiredDegreesKeys[e] !== "") { 
-                    newJob.employerOnly.desiredDegrees.key.push(req.body.desiredDegreesKeys[e]);
-                    newJob.employerOnly.desiredDegrees.value.push(req.body.desiredDegreesValues[e]);
+                    newJob.employerOnly.desiredDegrees.push({key: req.body.desiredDegreesKeys[e], value: req.body.desiredDegreesValues[e]});
                 }
             }
         }
