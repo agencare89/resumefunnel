@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $.fn.dataTable.moment( 'DD/MM/YYYY' );
+    $.fn.dataTable.moment('DD/MM/YYYY');
     
 	$.ajax({
         url: "/postings/.json",
@@ -19,7 +19,7 @@ $(document).ready(function() {
                 ]
             });
 
-            table.("tr").css('cursor', 'pointer');
+            table.$("tr").css('cursor', 'pointer');
 
             table.$('tr').click(function () {
                 var data = table.fnGetData(this);
@@ -27,8 +27,8 @@ $(document).ready(function() {
             });
 		},
         error: function (jqXHR, textStatus, errorThrown) {
-            table.("tr").css('cursor', 'pointer');
-            
+            table.$("tr").css('cursor', 'pointer');
+
             $("#jobPostingsTable").dataTable({
                 columns: [
                     { data: "_id", visible: false },
