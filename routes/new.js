@@ -131,10 +131,10 @@ router.post('/', loggedIn, function(req, res, next) {
     }
     
     // save the job
-    newJob.save(function(err) {
+    newJob.save(function(err, job) {
         if (err) throw err;
         
-        res.redirect(req.get('referer'));
+        res.redirect('/job/' + job._id);
     });
 });
 
