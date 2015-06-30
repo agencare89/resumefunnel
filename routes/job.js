@@ -14,6 +14,8 @@ var skills = "";
 
 var jobObj;
 
+var totalWeight;
+
 //Create the AlchemyAPI object
 var AlchemyAPI = require('../alchemyapi_node/alchemyapi');
 var alchemyapi = new AlchemyAPI();
@@ -67,7 +69,7 @@ function postProcess(output){
 	degreeScore = degreeWeighting(degreeWeights, output);
 
 	// Compute an overall rating based on the 5 categories above
-	var totalWeight = skillScore*0.4 + jobTitleScore*0.2 + companyScore*0.2
+	totalWeight = skillScore*0.4 + jobTitleScore*0.2 + companyScore*0.2
 		+ educationScore*0.1 + degreeScore*0.1;
 	
 	console.log(totalWeight);
