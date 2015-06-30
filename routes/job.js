@@ -224,7 +224,7 @@ router.get('/:job_id/.json', function(req, res, next) {
 });
 
 router.post('/api/pdf',
-		[multer({ dest: './uploads/',
+		[multer({ dest: './uploads/resumes',
 	    rename: function (fieldname, filename) {
 	        return filename+Date.now();
 	    },

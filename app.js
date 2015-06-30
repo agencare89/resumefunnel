@@ -16,6 +16,7 @@ var flash = require('connect-flash');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var multer = require('multer');
 
 // database config
 var configDB = require('./config/database.js');
@@ -35,6 +36,11 @@ app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secre
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
+app.use(multer({ dest: './uploads/img/', 
+                 rename: function (fieldname, filename, req, res) {
+                    console.log(req);
+                    return filename;
+        }}));
 
 // Routes
 var index = require('./routes/index');
