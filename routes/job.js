@@ -283,19 +283,19 @@ router.post('/api/pdf/:job_id',
         var newResume = new Resume();
         newResume.path = req.files.userPDF.originalname;
         newResume.matchPercent = totalWeight;
-        newResume.save(function(err) { 
-            if(err) throw err; 
-            JobPosting.findById( req.params.job_id, function(err, data) { 
-                data.resumes.push(newResume);
-                
-                var upsertData = data.toObject();
-                delete upsertData._id;
-                
-                JobPosting.update({ jobTitle: jobTitle},  upsertData, {upsert:true}, function(err) { 
-                    if(err) console.log(err); 
-                });
+        newResume.save(function(err, resume) { 
+            if(err) throw err;
+
+            JobPosting.findById( req.params.job_id, function(err, job) { 
+                job.resumes.push(resume._id);
+
+                job.save(function(err) {
+	                if (err)
+	                    res.send(err);
+
+	                res.redirect(req.get('referer'));
+	            });
             });
-            res.redirect(req.get('referer'));
         });      
 	}]);
 
