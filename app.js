@@ -59,7 +59,7 @@ helpers(app);
 
 app.get('/logout', function(req, res) {
     req.logout();
-    res.redirect('/');
+    res.redirect('/login');
 });
 
 // start server on the specified port and binding host

@@ -1,5 +1,6 @@
 $(document).ready(function() {
     $("#jobPostingsTable tr").css('cursor', 'pointer');
+    $.fn.dataTable.moment( 'DD/MM/YYYY' );
     
 	$.ajax({
         url: "/postings/.json",
@@ -7,8 +8,6 @@ $(document).ready(function() {
         dataType: "json",
         cache: true,
         success: function(data) {
-            console.log(JSON.stringify(data), null, 2);
-
         	var table = $("#jobPostingsTable").dataTable({
         		data: data,
                 order: [[ 4, "asc" ], [ 1, "asc" ]],
@@ -39,3 +38,22 @@ $(document).ready(function() {
         }
     });
 });
+
+/* DataTables Date Sorting
+---------------------------------------------------- */
+
+$.fn.dataTable.moment = function ( format, locale ) {
+    var types = $.fn.dataTable.ext.type;
+ 
+    // Add type detection
+    types.detect.unshift( function ( d ) {
+        return moment( d, format, locale, true ).isValid() ?
+            'moment-'+format :
+            null;
+    } );
+ 
+    // Add sorting method - use an integer for the sorting
+    types.order[ 'moment-'+format+'-pre' ] = function ( d ) {
+        return moment( d, format, locale, true ).unix();
+    };
+};

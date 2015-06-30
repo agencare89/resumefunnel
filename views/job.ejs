@@ -35,7 +35,7 @@
 				<hr />
 				<h2>Job Description</h2>
 				<p>
-					<%= job.jobDescription %>
+					<%- job.jobDescription.replace('\n', '<br>') %>
 				</p>
 
 				<h2>Desirable Qualifications</h2>
@@ -54,7 +54,7 @@
 
 				<h2>Other Notes</h2>
 				<p>
-					<%= job.notes %>
+					<%- job.notes.replace('\n', '<br>') %>
 				</p>
 			</div>
 			<div class="col-md-4">
