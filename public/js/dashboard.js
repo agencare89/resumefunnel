@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    $("#jobPostingsTable tr").css('cursor', 'pointer');
     $.fn.dataTable.moment( 'DD/MM/YYYY' );
     
     $.ajax({
@@ -8,7 +7,6 @@ $(document).ready(function() {
         dataType: "json",
         cache: true,
         success: function(data) {
-            console.log(data);
             var table = $("#jobPostingsTable").dataTable({
                 data: data,
                 order: [[ 4, "asc" ], [ 1, "asc" ]],
@@ -20,6 +18,8 @@ $(document).ready(function() {
                     { data: "dueDate", sTitle: "Deadline", sClass: "center" }
                 ]
             });
+
+            table.$("tr").css('cursor', 'pointer');
 
             table.$('tr').click(function () {
                 var data = table.fnGetData(this);

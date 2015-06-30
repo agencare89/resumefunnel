@@ -27,8 +27,6 @@ $(document).ready(function() {
             });
 		},
         error: function (jqXHR, textStatus, errorThrown) {
-            table.$("tr").css('cursor', 'pointer');
-
             $("#jobPostingsTable").dataTable({
                 columns: [
                     { data: "_id", visible: false },
