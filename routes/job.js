@@ -278,7 +278,7 @@ router.post('/api/pdf',
 	    }
 	}),
 	function(req, res){
-		res.end("Uploaded");
+		res.redirect(req.get('referer'));
 	}]);
 
 module.exports = router;
