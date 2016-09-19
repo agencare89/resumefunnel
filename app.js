@@ -59,7 +59,8 @@ app.use('/dashboard', dashboard);
 app.use('/job', job);
 app.use('/new', newPost);
 
-var appEnv = cfenv.getAppEnv();
+//var appEnv = cfenv.getAppEnv();
+var processPort = process.env.PORT || 3000;
 
 helpers(app);
 
@@ -69,6 +70,6 @@ app.get('/logout', function(req, res) {
 });
 
 // start server on the specified port and binding host
-app.listen(appEnv.port, appEnv.bind, function() {
-  console.log("server starting on " + appEnv.url);
+app.listen(process.env.PORT || 3000, function() {
+  console.log("server starting on https://localhost:" + processPort);
 });
